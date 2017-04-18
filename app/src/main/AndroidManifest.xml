@@ -25,6 +25,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cs321.classcamapp.MainActivity" />
         </activity>
+        <activity android:name=".Scheduler" />
+        <activity android:name=".CameraScreen"></activity>
     </application>
 
 </manifest>
