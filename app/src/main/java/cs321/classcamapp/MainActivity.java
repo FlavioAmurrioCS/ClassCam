@@ -13,6 +13,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // takes user to scheduler the first time they start the application
+        if(false){       //TODO check if schedule has been made yet
+            Intent intent = new Intent(this, Scheduler.class);
+            startActivity(intent);
+        }
+
     }
 
     public void openCamera(View view) {
@@ -22,7 +29,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openSchedule(View view) {
-        Toast.makeText(this, "Open Schedule", Toast.LENGTH_SHORT).show();Intent intent = new Intent(this, Scheduler.class);
+        Toast.makeText(this, "Open Schedule", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, Scheduler.class);
         startActivity(intent);
     }
 
