@@ -17,6 +17,8 @@ public class NoteDatabase {
         this.dataCount = this.database.size();
     }
 
+
+
     public int getSize() {
         return this.dataCount;
     }
@@ -37,6 +39,15 @@ public class NoteDatabase {
 
     public boolean addFile(String event, String type, Date timestamp) {
         NoteRecord nr = new NoteRecord(timestamp, type, event);
+        this.dataCount++;
+        this.database.add(nr);
+        FileIO.dbOutout(this.database, FileManager.DBFILENAME);
+        return true;
+    }
+
+    // Adding a file with only a timestamp
+    public boolean addFile(Date timestamp){
+        NoteRecord nr = new NoteRecord(timestamp, ".jpg", Scheduler.getEvent(timestamp));
         this.dataCount++;
         this.database.add(nr);
         FileIO.dbOutout(this.database, FileManager.DBFILENAME);
