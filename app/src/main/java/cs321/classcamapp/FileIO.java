@@ -1,4 +1,4 @@
-package com.classcam.classcam;
+package cs321.classcamapp;
 
 import java.io.File;
 import java.io.PrintWriter;

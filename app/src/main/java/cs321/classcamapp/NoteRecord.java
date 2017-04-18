@@ -1,4 +1,4 @@
-package com.classcam.classcam;
+package cs321.classcamapp;
 
 import java.util.Date;
 import java.util.ArrayList;
