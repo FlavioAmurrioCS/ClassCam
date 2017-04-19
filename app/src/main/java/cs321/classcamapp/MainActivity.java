@@ -21,11 +21,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // takes user to scheduler the first time they start the application
-        if(false){       //TODO check if schedule has been made yet
+        if(classSchedule.size() == 0){
+            // if there are no classes scheduled
             Intent intent = new Intent(this, Scheduler.class);
             startActivity(intent);
         }
-        else if (currentlyClassPeriod()){ //TODO check if now is currently a class
+        else if (currentlyClassPeriod()){
             //if it is a class period I want to go to the camera on start up
             Intent intent = new Intent(this, CameraScreen.class);
             startActivity(intent);
