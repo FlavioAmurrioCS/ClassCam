@@ -1,6 +1,7 @@
 package cs321.classcamapp;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -125,7 +126,35 @@ public class Schedule {
         {
             return retList;
         }
-        while
-
+        while(sc.hasNext())
+        {
+            retList.add(new Schedule(sc.nextLine()));
+        }
+        return retList;
     }
+
+    static void classDBOutout(ArrayList<Schedule> arr, String filePath)
+    {
+        PrintWriter outputStream = null;
+        try
+        {
+            outputStream = new PrintWriter(filePath);// create  the file
+        }
+        catch (Exception e)
+        {
+            System.out.println ("Error opening the file " + filePath);// if there is  no possible to create  the file
+            System.exit (0);
+        }
+        for (int i = 0; i < arr.size(); i++)
+        {
+            outputStream.print(arr.get(i).toFileString());
+        }//end for loop
+        outputStream.close();
+    }
+    
+
+
+
+
+
 }
