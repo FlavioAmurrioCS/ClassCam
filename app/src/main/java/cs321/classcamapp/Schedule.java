@@ -1,7 +1,11 @@
 package cs321.classcamapp;
 
+import java.io.File;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * Created by Flavio on 4/19/2017.
@@ -106,5 +110,22 @@ public class Schedule {
 
     public void setEndMin(int endMin) {
         this.endMin = endMin;
+    }
+
+
+    public static ArrayList<Schedule> classDBInput(String fileName)
+    {
+        Scanner sc;
+        ArrayList<Schedule> retList = new ArrayList<>();
+        try
+        {
+            sc = new Scanner(new File(fileName));
+        }
+        catch(Exception e)
+        {
+            return retList;
+        }
+        while
+
     }
 }
