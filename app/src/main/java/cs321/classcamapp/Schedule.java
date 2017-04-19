@@ -27,10 +27,9 @@ public class Schedule {
         this.setStartHour(Integer.parseInt(split[3]));
         this.setStartMin(Integer.parseInt(split[4]));
         this.setEndHour(Integer.parseInt(split[5]));
-
-
-
-
+        this.setEndMin(Integer.parseInt(split[6]));
+        String w = split[7].substring(1, split[7].length() - 1);
+        this.week = w.split(", ");
     }
 
     public String toFileString()
@@ -50,6 +49,7 @@ public class Schedule {
         sb.append("###");
         sb.append(this.endMin);
         sb.append(Arrays.toString(week));
+        return sb.toString();
     }
 
     public String getClassName() {
