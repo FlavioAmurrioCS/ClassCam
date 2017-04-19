@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -38,5 +41,11 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "Open File Manager", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, FileManager.class);
         startActivity(intent);
+    }
+        
+    public static String checkClass(){
+        Date dt = new Date();
+        for(int i=0; i < )
+        //arrayList of schedules(className, startDate, endDate, startHour, startMinute, endHour, endMinute (base 24)
     }
 }
