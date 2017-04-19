@@ -25,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, Scheduler.class);
             startActivity(intent);
         }
+        else if (currentlyClassPeriod()){ //TODO check if now is currently a class
+            //if it is a class period I want to go to the camera on start up
+            Intent intent = new Intent(this, CameraScreen.class);
+            startActivity(intent);
+        }
+        else{
+            //stay on the main acitivity screen
+        }
 
     }
 
@@ -70,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
         }
         // hello
         return "";
+    }
 
+    public static boolean currentlyClassPeriod(){
+        String className = checkClass();
+        if(className.equals("")){
+            return false;
+        }
+        return true;
     }
 }
