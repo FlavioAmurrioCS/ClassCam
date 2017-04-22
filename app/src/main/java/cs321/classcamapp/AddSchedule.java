@@ -117,9 +117,11 @@ public class AddSchedule extends AppCompatActivity {
 
         MainActivity.classSchedule.add(cl);
         Schedule.classDBOutout(MainActivity.classSchedule, MainActivity.classDB);
-//        Intent in = new Intent(this, Scheduler.class);
-//        startActivity(in);
-        finish();
+        Intent in = new Intent(this, Scheduler.class);
+        in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(in);
+
+       // finish();
 
     }
 
