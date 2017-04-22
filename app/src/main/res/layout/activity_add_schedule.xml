@@ -22,7 +22,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="n"
+            android:text=""
             android:id="@+id/editName"
             tools:text="name" />
     </LinearLayout>
@@ -38,7 +38,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="n"
+            android:text=""
             android:id="@+id/startDate"
             android:onClick="datePicker" />
     </LinearLayout>
@@ -54,7 +54,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="n"
+            android:text=""
             android:id="@+id/endDate"
             android:onClick="datePicker" />
     </LinearLayout>
@@ -70,7 +70,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="n"
+            android:text=""
             android:id="@+id/startTime"
             android:onClick="timePicker" />
     </LinearLayout>
@@ -86,7 +86,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="n"
+            android:text=""
             android:id="@+id/endTime"
             android:onClick="timePicker" />
     </LinearLayout>

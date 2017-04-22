@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -23,6 +25,14 @@ public class AddSchedule extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_schedule);
+
+        Mon = (CheckBox)findViewById(R.id.checkBox);
+        Tue = (CheckBox)findViewById(R.id.checkBox1);
+        Wed = (CheckBox)findViewById(R.id.checkBox2);
+        Thurs = (CheckBox)findViewById(R.id.checkBox3);
+        Fri = (CheckBox)findViewById(R.id.checkBox4);
+        Sat = (CheckBox)findViewById(R.id.checkBox5);
+        Sun = (CheckBox)findViewById(R.id.checkBox6);
 
         date_start =(EditText)findViewById(R.id.startDate);
         date_end = (EditText) findViewById(R.id.endDate);
@@ -84,10 +94,34 @@ public class AddSchedule extends AppCompatActivity {
     }
 
     public void saveMethod(View view) {
-
-
-
         Schedule cl = new Schedule();
+
+        if(Mon.isSelected())
+            cl.addWeek("Mon");
+        if(Tue.isSelected())
+            cl.addWeek("Tue");
+        if(Wed.isSelected())
+            cl.addWeek("Wed");
+        if(Thurs.isSelected())
+            cl.addWeek("Thur");
+        if(Fri.isSelected())
+            cl.addWeek("Fri");
+        if(Sat.isSelected())
+            cl.addWeek("Sat");
+        if(Sun.isSelected())
+            cl.addWeek("Sun");
+
+        if(name.getText().toString().equals("")|| date_start.getText().toString().equals("")
+                || date_end.getText().toString().equals("") || time_end.getText().toString().equals("")
+                || time_start.getText().toString().equals("") || )
+            Toast.makeText(this, "Invalid Date", Toast.LENGTH_SHORT).show();
+
+        Date d = stringToDate(date_start.toString());
+        Date e = stringToDate(date_end.toString());
+        if(d.before(e))
+            Toast.makeText(this, "Invalid Date", Toast.LENGTH_SHORT).show();
+
+
 //        cl.setClassName(name.toString());
 //
 //        cl.setStartDate(stringToDate(date_start.toString()));

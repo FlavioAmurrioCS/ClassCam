@@ -43,9 +43,9 @@ public class Schedule {
     {
         StringBuilder sb = new StringBuilder();
         sb.append("Class: " + this.className + "\n");
-        sb.append("On: " + week.toString());
-        sb.append("Time: " + this.startHour+ ":" + startMin + " - " + this.endHour + ":" +endMin);
-        sb.append("Date: " + this.startDate + " - " + this.endDate);
+        sb.append("On: " + week.toString() +"\n");
+        sb.append("Time: " + this.startHour+ ":" + startMin + " - " + this.endHour + ":" +endMin+"\n");
+        sb.append("Date: " + this.startDate + " - " + this.endDate+"\n");
         return sb.toString();
     }
 
