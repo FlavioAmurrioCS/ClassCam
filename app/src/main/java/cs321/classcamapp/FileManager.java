@@ -18,7 +18,6 @@ import java.util.*;
 
 public class FileManager extends AppCompatActivity {
 
-    Intent browserIntent = new Intent(this, ImageBrowser.class);
     public static String DBFILENAME = getFolderName() + "/" + "NoteDataBase.txt";
     public static NoteDatabase NTDB = new NoteDatabase(DBFILENAME);
     GridView grid;
@@ -52,11 +51,13 @@ public class FileManager extends AppCompatActivity {
         }
 
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                Toast.makeText(FileManager.this, "" + position, Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+//                Toast.makeText(FileManager.this, "" + position, Toast.LENGTH_SHORT).show();
+
+                Intent browserIntent = new Intent(FileManager.this, ImageBrowser.class);
                 browserIntent.putExtra("position", position);
                 startActivity(browserIntent);
+//                Toast.makeText(FileManager.this, "well nothing happened?", Toast.LENGTH_SHORT).show();
 
             }
         });
