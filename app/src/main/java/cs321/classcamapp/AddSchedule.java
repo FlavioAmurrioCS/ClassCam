@@ -16,17 +16,12 @@ public class AddSchedule extends AppCompatActivity {
     EditText name, date_start, date_end, time_start, time_end;
     CheckBox Mon, Tue, Wed, Thurs, Fri, Sat, Sun;
     Button save, cancel;
-    FileIO fileio = new FileIO();
-    ArrayList<Class> classData = null;
+    //ArrayList<Class> classData = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_schedule);
-
-        classData = new ArrayList<>();
-        classData.clear();
-        //classData.addAll(fileio.FileInput());
 
         date_start =(EditText)findViewById(R.id.startDate);
         date_end = (EditText) findViewById(R.id.endDate);
@@ -103,7 +98,7 @@ public class AddSchedule extends AppCompatActivity {
         cl.setEndHour(tem2[0]);
         cl.setEndMin(tem2[1]);
 
-        classData.add(cl);
+        MainActivity.classSchedule.add(cl);
 
     }
 
