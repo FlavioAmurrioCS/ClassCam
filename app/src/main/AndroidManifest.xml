@@ -26,7 +26,16 @@
                 android:value="cs321.classcamapp.MainActivity" />
         </activity>
         <activity android:name=".Scheduler" />
-        <activity android:name=".CameraScreen"></activity>
+        <activity android:name=".CameraScreen" />
+        <activity
+            android:name=".TestingPage"
+            android:label="@string/title_activity_testing_page"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cs321.classcamapp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

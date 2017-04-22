@@ -11,9 +11,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    static String classDB = FileManager.getFolderName() + "/" + "classDB.txt";
+    public static String classDB = FileManager.getFolderName() + "/" + "classDB.txt";
     //arrayList of schedules(className, startDate, endDate, startHour, startMinute, endHour, endMinute (base 24)
     static ArrayList<Schedule> classSchedule = Schedule.classDBInput(classDB);
+    public static String noteDB= FileManager.getFolderName() + "/" + "classDB.txt";
+    public static NoteDatabase DB= new NoteDatabase(noteDB);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
