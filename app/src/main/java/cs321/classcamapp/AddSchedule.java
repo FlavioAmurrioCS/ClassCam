@@ -1,6 +1,7 @@
 package cs321.classcamapp;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -84,21 +85,40 @@ public class AddSchedule extends AppCompatActivity {
 
     public void saveMethod(View view) {
 
+
+
         Schedule cl = new Schedule();
-        cl.setClassName(name.toString());
+//        cl.setClassName(name.toString());
+//
+//        cl.setStartDate(stringToDate(date_start.toString()));
+//        cl.setEndDate(stringToDate(date_end.toString()));
+//
+//        int tem []= stringToTime(time_end.toString());
+//        cl.setStartHour(tem[0]);
+//        cl.setStartMin(tem[1]);
+//
+//        int tem2 []= stringToTime(time_start.toString());
+//        cl.setEndHour(tem2[0]);
+//        cl.setEndMin(tem2[1]);
 
-        cl.setStartDate(stringToDate(date_start.toString()));
-        cl.setEndDate(stringToDate(date_end.toString()));
+        cl.setClassName("CS321");
 
-        int tem []= stringToTime(time_end.toString());
-        cl.setStartHour(tem[0]);
-        cl.setStartMin(tem[1]);
+        cl.setStartDate(new Date());
+        cl.setEndDate(new Date());
 
-        int tem2 []= stringToTime(time_start.toString());
-        cl.setEndHour(tem2[0]);
-        cl.setEndMin(tem2[1]);
+        //int tem []= stringToTime(time_end.toString());
+        cl.setStartHour(1);
+        cl.setStartMin(21);
+
+//        int tem2 []= stringToTime(time_start.toString());
+        cl.setEndHour(2);
+        cl.setEndMin(40);
+        cl.addWeek("Monday");
 
         MainActivity.classSchedule.add(cl);
+        Schedule.classDBOutout(MainActivity.classSchedule, MainActivity.classDB);
+        Intent in = new Intent(this, Scheduler.class);
+        startActivity(in);
 
     }
 

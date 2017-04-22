@@ -21,7 +21,7 @@ public class Schedule {
 
     public Schedule()
     {
-        //Nothing
+        week = new ArrayList<>();
     }
 
     public Schedule(String input) {
@@ -38,6 +38,16 @@ public class Schedule {
         for(int i = 0; i < temp.length; i++){
             week.add(temp[i]);
         }
+    }
+
+    public String toListView()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Class: " + this.className + "\n");
+        sb.append("On: " + week.toString());
+        sb.append("Time: " + this.startHour+ ":" + startMin + " - " + this.endHour + ":" +endMin);
+        sb.append("Date: " + this.startDate + " - " + this.endDate);
+        return sb.toString();
     }
 
     public String toFileString()
@@ -135,7 +145,9 @@ public class Schedule {
         }
         while(sc.hasNext())
         {
-            retList.add(new Schedule(sc.nextLine()));
+            String line = sc.nextLine();
+            Schedule schedule = new Schedule(line);
+            retList.add(schedule);
         }
         return retList;
     }
