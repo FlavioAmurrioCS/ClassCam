@@ -26,7 +26,7 @@ public class AddSchedule extends AppCompatActivity {
 
         classData = new ArrayList<>();
         classData.clear();
-        classData.addAll(fileio.FileInput());
+        //classData.addAll(fileio.FileInput());
 
         date_start =(EditText)findViewById(R.id.startDate);
         date_end = (EditText) findViewById(R.id.endDate);
