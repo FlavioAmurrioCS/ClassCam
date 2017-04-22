@@ -34,8 +34,6 @@ public class Scheduler extends AppCompatActivity {
     public void openAdd(View view) {
         Intent intent = new Intent(this, AddSchedule.class);
         startActivity(intent);
-
-        Toast.makeText(this, "Comes Back Here", Toast.LENGTH_SHORT).show();
     }
 
 

@@ -40,12 +40,24 @@ public class Schedule {
     }
 
     public String toListView()
+   {
+//        CS321 - [Mon, Wed]
+//        Time: 1:30 - 2:30
+//        Date: 01/21/2018 - 03/23/2018
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.className + " - ");
+        sb.append(week.toString() +"\n");
+        sb.append("Time: " + this.startHour+ ":" + startMin + " - " + this.endHour + ":" +endMin+"\n");
+        sb.append(dateToString(this.startDate) + " - " + dateToString(this.endDate));
+        return sb.toString();
+    }
+
+    private String dateToString(Date dt)
     {
         StringBuilder sb = new StringBuilder();
-        sb.append("Class: " + this.className + "\n");
-        sb.append("On: " + week.toString() +"\n");
-        sb.append("Time: " + this.startHour+ ":" + startMin + " - " + this.endHour + ":" +endMin+"\n");
-        sb.append("Date: " + this.startDate + " - " + this.endDate+"\n");
+        sb.append((dt.getDate()) + "/");
+        sb.append((dt.getYear() + 1900));
         return sb.toString();
     }
 
