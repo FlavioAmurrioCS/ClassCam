@@ -6,6 +6,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
+
+import java.util.Date;
 
 public class TestingPage extends AppCompatActivity {
 
@@ -29,6 +32,11 @@ public class TestingPage extends AppCompatActivity {
 
     public void TakePicture(View view) {
 
-
+        Date dt = new Date();
+        MainActivity.noteDB.addFile(dt);
+        //TODO takes the picture
+        //MainActivity.noteDB.addFile(dt);
+        String str = MainActivity.noteDB.getLast();
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 }

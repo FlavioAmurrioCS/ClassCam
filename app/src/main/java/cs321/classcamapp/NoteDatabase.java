@@ -96,4 +96,9 @@ public class NoteDatabase {
         }
         return arr;
     }
+
+    public String getLast()
+    {
+        return database.get(database.size()-1).toString();
+    }
 }

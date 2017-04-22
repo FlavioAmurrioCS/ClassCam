@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
     public static String classDB = FileManager.getFolderName() + "/" + "classDB.txt";
     //arrayList of schedules(className, startDate, endDate, startHour, startMinute, endHour, endMinute (base 24)
     static ArrayList<Schedule> classSchedule = Schedule.classDBInput(classDB);
-    public static String noteDB= FileManager.getFolderName() + "/" + "classDB.txt";
-    public static NoteDatabase DB= new NoteDatabase(noteDB);
+    public static String noteDBName= FileManager.getFolderName() + "/" + "noteDB.txt";
+    public static NoteDatabase noteDB = new NoteDatabase(noteDBName);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openCamera(View view) {
         Toast.makeText(this, "Open Camera", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, CameraScreen.class);
+        Intent intent = new Intent(this, TestingPage.class);
         startActivity(intent);
     }
 
