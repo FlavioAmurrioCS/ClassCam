@@ -22,9 +22,9 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="CS 321"
             android:id="@+id/editName"
-            tools:text="name" />
+            />
     </LinearLayout>
 
     <LinearLayout
