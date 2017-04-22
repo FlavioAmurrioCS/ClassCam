@@ -40,6 +40,16 @@ public class Schedule {
         }
     }
 
+    public String toListView()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Class: " + this.className + "\n");
+        sb.append("On: " + week.toString());
+        sb.append("Time: " + this.startHour+ ":" + startMin + " - " + this.endHour + ":" +endMin);
+        sb.append("Date: " + this.startDate + " - " + this.endDate);
+        return sb.toString();
+    }
+
     public String toFileString()
     {
         StringBuilder sb = new StringBuilder();
@@ -135,7 +145,9 @@ public class Schedule {
         }
         while(sc.hasNext())
         {
-            retList.add(new Schedule(sc.nextLine()));
+            String line = sc.nextLine();
+            Schedule schedule = new Schedule(line);
+            retList.add(schedule);
         }
         return retList;
     }

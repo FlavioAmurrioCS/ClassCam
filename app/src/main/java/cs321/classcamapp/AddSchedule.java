@@ -85,6 +85,8 @@ public class AddSchedule extends AppCompatActivity {
 
     public void saveMethod(View view) {
 
+
+
         Schedule cl = new Schedule();
 //        cl.setClassName(name.toString());
 //
@@ -111,6 +113,7 @@ public class AddSchedule extends AppCompatActivity {
 //        int tem2 []= stringToTime(time_start.toString());
         cl.setEndHour(2);
         cl.setEndMin(40);
+        cl.addWeek("Monday");
 
         MainActivity.classSchedule.add(cl);
         Schedule.classDBOutout(MainActivity.classSchedule, MainActivity.classDB);

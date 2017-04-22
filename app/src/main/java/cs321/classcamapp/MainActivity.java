@@ -16,13 +16,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     //arrayList of schedules(className, startDate, endDate, startHour, startMinute, endHour, endMinute (base 24)
-    static ArrayList<Schedule> classSchedule = Schedule.classDBInput(classDB);
+    static ArrayList<Schedule> classSchedule;
     public static NoteDatabase noteDB = new NoteDatabase(noteDBName);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        classSchedule = Schedule.classDBInput(classDB);
 
 //        // takes user to scheduler the first time they start the application
 //        if(classSchedule.size() == 0){
