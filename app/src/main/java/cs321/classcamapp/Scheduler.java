@@ -22,7 +22,7 @@ public class Scheduler extends AppCompatActivity {
         ArrayList<String> a = new ArrayList<String>();
         for (int i = 0; i< MainActivity.classSchedule.size(); i++){
             Schedule e = MainActivity.classSchedule.get(i);
-            a.add(e.toFileString());
+            a.add(e.toListView());
         }
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
