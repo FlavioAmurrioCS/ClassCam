@@ -22,9 +22,9 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="CS 321"
             android:id="@+id/editName"
-            tools:text="name" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -38,7 +38,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="04/21/2017"
             android:id="@+id/startDate"
             android:onClick="datePicker" />
     </LinearLayout>
@@ -54,7 +54,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="04/27/2017"
             android:id="@+id/endDate"
             android:onClick="datePicker" />
     </LinearLayout>
@@ -70,7 +70,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="12:45"
             android:id="@+id/startTime"
             android:onClick="timePicker" />
     </LinearLayout>
@@ -86,7 +86,7 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="13:30"
             android:id="@+id/endTime"
             android:onClick="timePicker" />
     </LinearLayout>
