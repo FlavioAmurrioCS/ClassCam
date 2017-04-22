@@ -1,5 +1,6 @@
 package cs321.classcamapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +18,7 @@ import java.util.*;
 
 public class FileManager extends AppCompatActivity {
 
+    Intent browserIntent = new Intent(this, ImageBrowser.class);
     public static String DBFILENAME = getFolderName() + "/" + "NoteDataBase.txt";
     public static NoteDatabase NTDB = new NoteDatabase(DBFILENAME);
     GridView grid;
@@ -34,17 +36,28 @@ public class FileManager extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_manager);
 
-        CustomGrid adapter = new CustomGrid(FileManager.this, getClassNames(classSchedule), getFolders(classSchedule));
-        grid = (GridView)findViewById(R.id.gridview);
-        grid.setAdapter(adapter);
-//        GridView gridview = (GridView) findViewById(R.id.gridview);
-//        gridview.setAdapter(new ImageAdapter(this));
+        if(classSchedule.size() > 0) {
+            CustomGrid adapter = new CustomGrid(FileManager.this, getClassNames(classSchedule), getFolders(classSchedule));
+            grid = (GridView) findViewById(R.id.gridview);
+            grid.setAdapter(adapter);
+        }
+        else {
+            Toast.makeText(FileManager.this, "Hello world!", Toast.LENGTH_SHORT).show();
+            // Want to display something saying "No pictures.. go schedule a class and take some pictures!"
+            String[] message = {"No pictures found. Go Schedulea class and take some notes!"};
+            Integer[] empty = {R.drawable.emptyicon};
+            CustomGrid adapter = new CustomGrid(FileManager.this, message, empty);
+            grid = (GridView) findViewById(R.id.gridview);
+            grid.setAdapter(adapter);
+        }
 
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                Toast.makeText(FileManager.this, "" + position,
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(FileManager.this, "" + position, Toast.LENGTH_SHORT).show();
+                browserIntent.putExtra("position", position);
+                startActivity(browserIntent);
+
             }
         });
 
