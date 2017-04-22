@@ -17,7 +17,7 @@ public class Schedule {
     private String className;
     private Date startDate, endDate;
     private int startHour, endHour, startMin,endMin;
-    private String week[];
+    private ArrayList<String> week;
 
     public Schedule()
     {
@@ -34,7 +34,10 @@ public class Schedule {
         this.setEndHour(Integer.parseInt(split[5]));
         this.setEndMin(Integer.parseInt(split[6]));
         String w = split[7].substring(1, split[7].length() - 1);
-        this.week = w.split(", ");
+        String temp [] = w.split(", ");
+        for(int i = 0; i < temp.length; i++){
+            week.add(temp[i]);
+        }
     }
 
     public String toFileString()
@@ -53,7 +56,7 @@ public class Schedule {
         sb.append(this.endHour);
         sb.append("###");
         sb.append(this.endMin);
-        sb.append(Arrays.toString(week));
+        sb.append(week.toString());
         return sb.toString();
     }
 
@@ -113,6 +116,10 @@ public class Schedule {
         this.endMin = endMin;
     }
 
+    public void addWeek(String w){
+        this.week.add(w);
+    }
+
 
     public static ArrayList<Schedule> classDBInput(String fileName)
     {
@@ -151,7 +158,7 @@ public class Schedule {
         }//end for loop
         outputStream.close();
     }
-    
+
 
 
 
