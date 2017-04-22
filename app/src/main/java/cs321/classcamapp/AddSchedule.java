@@ -17,16 +17,20 @@ public class AddSchedule extends AppCompatActivity {
     CheckBox Mon, Tue, Wed, Thurs, Fri, Sat, Sun;
     Button save, cancel;
     FileIO fileio = new FileIO();
-    ArrayList<Class> classData = null;
+    ArrayList<Schedule> classData = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_schedule);
 
-        classData = new ArrayList<>();
-        classData.clear();
-        //classData.addAll(fileio.FileInput());
+        Mon = (CheckBox)findViewById(R.id.checkBox);
+        Tue = (CheckBox)findViewById(R.id.checkBox1);
+        Wed = (CheckBox)findViewById(R.id.checkBox2);
+        Thurs = (CheckBox)findViewById(R.id.checkBox3);
+        Fri = (CheckBox)findViewById(R.id.checkBox4);
+        Sat = (CheckBox)findViewById(R.id.checkBox5);
+        Sun = (CheckBox)findViewById(R.id.checkBox6);
 
         date_start =(EditText)findViewById(R.id.startDate);
         date_end = (EditText) findViewById(R.id.endDate);
@@ -102,6 +106,21 @@ public class AddSchedule extends AppCompatActivity {
         int tem2 []= stringToTime(time_start.toString());
         cl.setEndHour(tem2[0]);
         cl.setEndMin(tem2[1]);
+
+        if(Mon.isSelected())
+            cl.addWeek("Mon");
+        if(Tue.isSelected())
+            cl.addWeek("Tue");
+        if(Wed.isSelected())
+            cl.addWeek("Wed");
+        if(Thurs.isSelected())
+            cl.addWeek("Thur");
+        if(Fri.isSelected())
+            cl.addWeek("Fri");
+        if(Sat.isSelected())
+            cl.addWeek("Sat");
+        if(Sun.isSelected())
+            cl.addWeek("Sun");
 
         classData.add(cl);
 
