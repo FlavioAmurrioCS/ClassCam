@@ -114,24 +114,21 @@ public class AddSchedule extends AppCompatActivity {
 
     public void saveMethod(View view) {
 
-
-
-        if(name.getText().toString().equals("")|| date_start.getText().toString().equals("")
-                || date_end.getText().toString().equals("") || time_end.getText().toString().equals("")
-                || time_start.getText().toString().equals("") || checkWeek().isEmpty())
-            Toast.makeText(this, "Invalid Date", Toast.LENGTH_SHORT).show();
-
         Date d = stringToDate(date_start.toString());
         Date e = stringToDate(date_end.toString());
-        if(d.before(e))
+        if(name.getText().toString().equals("")|| date_start.getText().toString().equals("")
+                || date_end.getText().toString().equals("") || time_end.getText().toString().equals("")
+                || time_start.getText().toString().equals("") || checkWeek().isEmpty() ||  d.before(e)) {
             Toast.makeText(this, "Invalid Date", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Schedule cl = new Schedule();
 
         ArrayList<String> w = checkWeek();
         for(String a : checkWeek())
                 cl.addWeek(a);
-        
+
 //        cl.setClassName(name.toString());
 //
 //        cl.setStartDate(stringToDate(date_start.toString()));
