@@ -17,11 +17,10 @@ public class Schedule {
     private String className;
     private Date startDate, endDate;
     private int startHour, endHour, startMin,endMin;
-    private ArrayList<String> week;
+    private ArrayList<String> week = new ArrayList<>();
 
     public Schedule()
     {
-        week = new ArrayList<>();
     }
 
     public Schedule(String input) {
@@ -66,6 +65,7 @@ public class Schedule {
         sb.append(this.endHour);
         sb.append("###");
         sb.append(this.endMin);
+        sb.append("###");
         sb.append(week.toString());
         return sb.toString();
     }
@@ -166,7 +166,7 @@ public class Schedule {
         }
         for (int i = 0; i < arr.size(); i++)
         {
-            outputStream.print(arr.get(i).toFileString());
+            outputStream.println(arr.get(i).toFileString());
         }//end for loop
         outputStream.close();
     }
