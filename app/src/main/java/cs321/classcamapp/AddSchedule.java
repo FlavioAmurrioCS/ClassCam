@@ -93,27 +93,32 @@ public class AddSchedule extends AppCompatActivity {
         });
     }
 
-    public void saveMethod(View view) {
-        Schedule cl = new Schedule();
-
+    public ArrayList<String> checkWeek(){
+        ArrayList<String> cb = new ArrayList<>();
         if(Mon.isSelected())
-            cl.addWeek("Mon");
+            cb.add("Mon");
         if(Tue.isSelected())
-            cl.addWeek("Tue");
+             cb.add ("Tue");
         if(Wed.isSelected())
-            cl.addWeek("Wed");
+             cb.add ("Wed");
         if(Thurs.isSelected())
-            cl.addWeek("Thur");
+             cb.add ("Thur");
         if(Fri.isSelected())
-            cl.addWeek("Fri");
+             cb.add ("Fri");
         if(Sat.isSelected())
-            cl.addWeek("Sat");
+             cb.add ("Sat");
         if(Sun.isSelected())
-            cl.addWeek("Sun");
+             cb.add ("Sun");
+        return  cb;
+    }
+
+    public void saveMethod(View view) {
+
+
 
         if(name.getText().toString().equals("")|| date_start.getText().toString().equals("")
                 || date_end.getText().toString().equals("") || time_end.getText().toString().equals("")
-                || time_start.getText().toString().equals("") || )
+                || time_start.getText().toString().equals("") || checkWeek().isEmpty())
             Toast.makeText(this, "Invalid Date", Toast.LENGTH_SHORT).show();
 
         Date d = stringToDate(date_start.toString());
@@ -121,7 +126,12 @@ public class AddSchedule extends AppCompatActivity {
         if(d.before(e))
             Toast.makeText(this, "Invalid Date", Toast.LENGTH_SHORT).show();
 
+        Schedule cl = new Schedule();
 
+        ArrayList<String> w = checkWeek();
+        for(String a : checkWeek())
+                cl.addWeek(a);
+        
 //        cl.setClassName(name.toString());
 //
 //        cl.setStartDate(stringToDate(date_start.toString()));
