@@ -1,16 +1,39 @@
 package cs321.classcamapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Scheduler extends AppCompatActivity {
 
+    private ListView mListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scheduler);
+
+        mListView = (ListView) findViewById(R.id.listView);
+        ArrayList<String> a = new ArrayList<String>();
+        for (int i = 0; i< MainActivity.classSchedule.size(); i++){
+            Schedule e = MainActivity.classSchedule.get(i);
+            a.add(e.toListView());
+        }
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, a);
+        mListView.setAdapter(arrayAdapter);
+    }
+
+    public void openAdd(View view) {
+        Intent intent = new Intent(this, AddSchedule.class);
+        startActivity(intent);
     }
 
 

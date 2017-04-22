@@ -3,7 +3,9 @@
     package="cs321.classcamapp">
 
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
@@ -32,7 +34,18 @@
         </activity>
         <activity android:name=".Scheduler" />
         <activity android:name=".CameraScreen" />
-        <activity android:name=".AddSchedule"></activity>
+        <activity android:name=".AddSchedule" />
+        <activity
+            android:name=".TestingPage"
+            android:label="@string/title_activity_testing_page"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cs321.classcamapp.MainActivity" />
+        </activity>
+        <activity android:name=".ImageBrowser" />
+        <activity android:name=".edit_schedule"></activity>
     </application>
 
 </manifest>

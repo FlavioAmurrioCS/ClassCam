@@ -11,35 +11,45 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    static String classDB = FileManager.getFolderName() + "/" + "classDB.txt";
+    public static String classDB = FileManager.getFolderName() + "/" + "classDB.txt";
+    public static String noteDBName= FileManager.getFolderName() + "/" + "noteDB.txt";
+
+
     //arrayList of schedules(className, startDate, endDate, startHour, startMinute, endHour, endMinute (base 24)
-    static ArrayList<Schedule> classSchedule = Schedule.classDBInput(classDB);
+    static ArrayList<Schedule> classSchedule;
+    public static NoteDatabase noteDB = new NoteDatabase(noteDBName);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        classSchedule = Schedule.classDBInput(classDB);
 
-        // takes user to scheduler the first time they start the application
-        if(classSchedule.size() == 0){
-            // if there are no classes scheduled
-            Intent intent = new Intent(this, Scheduler.class);
-            startActivity(intent);
-        }
-        else if (currentlyClassPeriod()){
-            //if it is a class period I want to go to the camera on start up
-            Intent intent = new Intent(this, CameraScreen.class);
-            startActivity(intent);
-        }
-        else{
-            //stay on the main acitivity screen
-        }
+//        classSchedule.add(new Schedule());
+//        classSchedule.add(new Schedule());
+//        classSchedule.get(0).setClassName("CS321");
+//        classSchedule.get(1).setClassName("CLAS 260");
+
+//        // takes user to scheduler the first time they start the application
+//        if(classSchedule.size() == 0){
+//            // if there are no classes scheduled
+//            Intent intent = new Intent(this, Scheduler.class);
+//            startActivity(intent);
+//        }
+//        else if (currentlyClassPeriod()){
+//            //if it is a class period I want to go to the camera on start up
+//            Intent intent = new Intent(this, CameraScreen.class);
+//            startActivity(intent);
+//        }
+//        else{
+//            //stay on the main acitivity screen
+//        }
 
     }
 
     public void openCamera(View view) {
         Toast.makeText(this, "Open Camera", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, CameraScreen.class);
+        Intent intent = new Intent(this, TestingPage.class);
         startActivity(intent);
     }
 

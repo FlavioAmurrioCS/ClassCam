@@ -17,11 +17,10 @@ public class Schedule {
     private String className;
     private Date startDate, endDate;
     private int startHour, endHour, startMin,endMin;
-    private String week[];
+    private ArrayList<String> week = new ArrayList<>();
 
     public Schedule()
     {
-        //Nothing
     }
 
     public Schedule(String input) {
@@ -34,7 +33,32 @@ public class Schedule {
         this.setEndHour(Integer.parseInt(split[5]));
         this.setEndMin(Integer.parseInt(split[6]));
         String w = split[7].substring(1, split[7].length() - 1);
-        this.week = w.split(", ");
+        String temp [] = w.split(", ");
+        for(int i = 0; i < temp.length; i++){
+            week.add(temp[i]);
+        }
+    }
+
+    public String toListView()
+   {
+//        CS321 - [Mon, Wed]
+//        Time: 1:30 - 2:30
+//        Date: 01/21/2018 - 03/23/2018
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.className + " - ");
+        sb.append(week.toString() +"\n");
+        sb.append("Time: " + this.startHour+ ":" + startMin + " - " + this.endHour + ":" +endMin+"\n");
+        sb.append(dateToString(this.startDate) + " - " + dateToString(this.endDate));
+        return sb.toString();
+    }
+
+    private String dateToString(Date dt)
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append((dt.getDate()) + "/");
+        sb.append((dt.getYear() + 1900));
+        return sb.toString();
     }
 
     public String toFileString()
@@ -53,7 +77,8 @@ public class Schedule {
         sb.append(this.endHour);
         sb.append("###");
         sb.append(this.endMin);
-        sb.append(Arrays.toString(week));
+        sb.append("###");
+        sb.append(week.toString());
         return sb.toString();
     }
 
@@ -113,6 +138,10 @@ public class Schedule {
         this.endMin = endMin;
     }
 
+    public void addWeek(String w){
+        this.week.add(w);
+    }
+
 
     public static ArrayList<Schedule> classDBInput(String fileName)
     {
@@ -128,7 +157,9 @@ public class Schedule {
         }
         while(sc.hasNext())
         {
-            retList.add(new Schedule(sc.nextLine()));
+            String line = sc.nextLine();
+            Schedule schedule = new Schedule(line);
+            retList.add(schedule);
         }
         return retList;
     }
@@ -147,11 +178,11 @@ public class Schedule {
         }
         for (int i = 0; i < arr.size(); i++)
         {
-            outputStream.print(arr.get(i).toFileString());
+            outputStream.println(arr.get(i).toFileString());
         }//end for loop
         outputStream.close();
     }
-    
+
 
 
 

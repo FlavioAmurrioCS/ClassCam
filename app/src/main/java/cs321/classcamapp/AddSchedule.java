@@ -1,12 +1,15 @@
 package cs321.classcamapp;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -16,17 +19,20 @@ public class AddSchedule extends AppCompatActivity {
     EditText name, date_start, date_end, time_start, time_end;
     CheckBox Mon, Tue, Wed, Thurs, Fri, Sat, Sun;
     Button save, cancel;
-    FileIO fileio = new FileIO();
-    ArrayList<Class> classData = null;
+    //ArrayList<Class> classData = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_schedule);
 
-        classData = new ArrayList<>();
-        classData.clear();
-        classData.addAll(fileio.FileInput());
+        Mon = (CheckBox)findViewById(R.id.checkBox);
+        Tue = (CheckBox)findViewById(R.id.checkBox1);
+        Wed = (CheckBox)findViewById(R.id.checkBox2);
+        Thurs = (CheckBox)findViewById(R.id.checkBox3);
+        Fri = (CheckBox)findViewById(R.id.checkBox4);
+        Sat = (CheckBox)findViewById(R.id.checkBox5);
+        Sun = (CheckBox)findViewById(R.id.checkBox6);
 
         date_start =(EditText)findViewById(R.id.startDate);
         date_end = (EditText) findViewById(R.id.endDate);
@@ -87,24 +93,59 @@ public class AddSchedule extends AppCompatActivity {
         });
     }
 
+    public ArrayList<String> checkWeek(){
+        ArrayList<String> cb = new ArrayList<>();
+        if(Mon.isChecked())
+            cb.add("Mon");
+        if(Tue.isChecked())
+             cb.add ("Tue");
+        if(Wed.isChecked())
+             cb.add ("Wed");
+        if(Thurs.isChecked())
+             cb.add ("Thur");
+        if(Fri.isChecked())
+             cb.add ("Fri");
+        if(Sat.isChecked())
+             cb.add ("Sat");
+        if(Sun.isChecked())
+             cb.add ("Sun");
+        return  cb;
+    }
+
     public void saveMethod(View view) {
+        String sName = name.getText().toString();
+        String sStartDate = date_start.getText().toString();
+        String sEndDate = date_end.getText().toString();
+        String sStartTime = time_start.getText().toString();
+        String sEndTime = time_end.getText().toString();
+        Date dStartDate = stringToDate(sStartDate);
+        Date dEndDate = stringToDate(sEndDate);
+
+        if(sName.equals("") || dEndDate.before(dStartDate) || checkWeek().isEmpty())
+        {
+            Toast.makeText(this, "Invalid Date", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Schedule cl = new Schedule();
-        cl.setClassName(name.toString());
+        cl.setClassName(sName);
+        cl.setStartDate(dStartDate);
+        cl.setEndDate(dEndDate);
+        int time []= stringToTime(sStartTime);
+        cl.setStartHour(time[0]);
+        cl.setStartMin(time[1]);
+        time = stringToTime(sEndTime);
+        cl.setEndHour(time[0]);
+        cl.setEndMin(time[1]);
+        ArrayList<String> w = checkWeek();
+        for(String a : checkWeek())
+            cl.addWeek(a);
 
-        cl.setStartDate(stringToDate(date_start.toString()));
-        cl.setEndDate(stringToDate(date_end.toString()));
-
-        int tem []= stringToTime(time_end.toString());
-        cl.setStartHour(tem[0]);
-        cl.setStartMin(tem[1]);
-
-        int tem2 []= stringToTime(time_start.toString());
-        cl.setEndHour(tem2[0]);
-        cl.setEndMin(tem2[1]);
-
-        classData.add(cl);
-
+        MainActivity.classSchedule.add(cl);
+        Schedule.classDBOutout(MainActivity.classSchedule, MainActivity.classDB);
+        Intent in = new Intent(this, Scheduler.class);
+        in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(in);
     }
 
     public Date stringToDate(String str){
@@ -113,7 +154,7 @@ public class AddSchedule extends AppCompatActivity {
         for(int i = 0; i < spl.length; i ++){
             day[i] = Integer.parseInt(spl[i]);
         }
-        return new Date(day[2], day[0], day[1]);
+        return new Date(day[2] - 1900, day[0] - 1, day[1]);
     }
 
     public int[] stringToTime(String str){
