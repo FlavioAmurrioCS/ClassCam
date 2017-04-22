@@ -20,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //TODO Remove the next three lines...
+        Schedule temp = new Schedule();
+        temp.setClassName("CS321");
+        classSchedule.add(temp);
+
         // takes user to scheduler the first time they start the application
         if(classSchedule.size() == 0){
             // if there are no classes scheduled

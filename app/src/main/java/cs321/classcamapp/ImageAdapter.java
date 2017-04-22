@@ -7,6 +7,10 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
+import static cs321.classcamapp.MainActivity.classSchedule;
+
 /**
  * Created by Flavio on 4/18/2017.
  */
@@ -19,7 +23,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     public int getCount() {
-        return mThumbIds.length;
+        return classSchedule.size();
     }
 
     public Object getItem(int position) {
@@ -42,33 +46,45 @@ public class ImageAdapter extends BaseAdapter {
         } else {
             imageView = (ImageView) convertView;
         }
-        imageView.setImageResource(mThumbIds[position]);
+
+        imageView.setImageResource(getFolders(classSchedule)[position]);
+
         return imageView;
     }
 //    public Object[] getImageList
 
-    // references to our images
-    private Integer[] mThumbIds = {
-            R.drawable.fileicon, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7,
-            R.drawable.sample_0, R.drawable.sample_1,
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7,
-            R.drawable.sample_0, R.drawable.sample_1,
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
+    private Integer[] getFolders(ArrayList<Schedule> classSchedule){
+        Integer[] temp = new Integer[classSchedule.size()];
+        for(int i=0; i < classSchedule.size(); i++){
+            temp[i] = (R.drawable.foldericon);
+        }
+        return temp;
+    }
 
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7,
-            R.drawable.sample_0, R.drawable.sample_1,
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7,
-            R.drawable.sample_0, R.drawable.sample_1,
-            R.drawable.sample_2, R.drawable.sample_3,
-            R.drawable.sample_4, R.drawable.sample_5,
-            R.drawable.sample_6, R.drawable.sample_7
-    };
+    public static Integer[] createItems;
+
+    // references to our images
+//    private Integer[] mThumbIds = {
+//            R.drawable.fileicon, R.drawable.sample_3,
+//            R.drawable.sample_4, R.drawable.sample_5,
+//            R.drawable.sample_6, R.drawable.sample_7,
+//            R.drawable.sample_0, R.drawable.sample_1,
+//            R.drawable.sample_2, R.drawable.sample_3,
+//            R.drawable.sample_4, R.drawable.sample_5,
+//            R.drawable.sample_6, R.drawable.sample_7,
+//            R.drawable.sample_0, R.drawable.sample_1,
+//            R.drawable.sample_2, R.drawable.sample_3,
+//            R.drawable.sample_4, R.drawable.sample_5,
+//
+//            R.drawable.sample_4, R.drawable.sample_5,
+//            R.drawable.sample_6, R.drawable.sample_7,
+//            R.drawable.sample_0, R.drawable.sample_1,
+//            R.drawable.sample_2, R.drawable.sample_3,
+//            R.drawable.sample_4, R.drawable.sample_5,
+//            R.drawable.sample_6, R.drawable.sample_7,
+//            R.drawable.sample_0, R.drawable.sample_1,
+//            R.drawable.sample_2, R.drawable.sample_3,
+//            R.drawable.sample_4, R.drawable.sample_5,
+//            R.drawable.sample_6, R.drawable.sample_7
+//    };
 }
