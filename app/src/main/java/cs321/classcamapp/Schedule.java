@@ -21,7 +21,7 @@ public class Schedule {
 
     public Schedule()
     {
-        //Nothing
+        week = new ArrayList<>();
     }
 
     public Schedule(String input) {

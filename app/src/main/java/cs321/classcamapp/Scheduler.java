@@ -17,19 +17,17 @@ public class Scheduler extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scheduler);
+
         mListView = (ListView) findViewById(R.id.listView);
+        ArrayList<String> a = new ArrayList<String>();
+        for (int i = 0; i< MainActivity.classSchedule.size(); i++){
+            Schedule e = MainActivity.classSchedule.get(i);
+            a.add(e.toListView());
+        }
 
-        //Class classList
-        //ArrayList<Schedule> classList = Schedule.toFileString();
-
-        //String[] listItems = new String[classList.size()];
-
-//        for(int i = 0; i < classList.size(); i++){
-//            listItems[i] = classList.toString();
-//        }
-//
-//        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listItems);
-//        mListView.setAdapter(adapter);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, a);
+        mListView.setAdapter(arrayAdapter);
     }
 
     public void openAdd(View view) {
