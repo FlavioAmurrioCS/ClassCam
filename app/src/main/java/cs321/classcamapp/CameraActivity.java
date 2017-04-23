@@ -23,7 +23,6 @@ public class CameraActivity extends AppCompatActivity {
     private CameraPreview mPreview;
     private static final String TAG = "CameraScreen";
     public static final int MEDIA_TYPE_IMAGE = 1;
-    public static final int MEDIA_TYPE_VIDEO = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +33,20 @@ public class CameraActivity extends AppCompatActivity {
         mCamera = getCameraInstance();
 
         // Create our Preview view and set it as the content of our activity.
-        mPreview = new CameraPreview(this, mCamera);
-        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
-        preview.addView(mPreview);
-        //mCamera.open();
-        Button captureButton = (Button) findViewById(R.id.button_capture);
-        captureButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // get an image from the camera
-                        mCamera.takePicture(null, null, mPicture);
+            mPreview = new CameraPreview(this, mCamera);
+            FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+            preview.addView(mPreview);
+            //mCamera.open();
+            Button captureButton = (Button) findViewById(R.id.button_capture);
+            captureButton.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // get an image from the camera
+                            mCamera.takePicture(null, null, mPicture);
+                        }
                     }
-                }
-        );
+            );
     }
 
     public static Camera getCameraInstance(){
@@ -124,9 +123,6 @@ public class CameraActivity extends AppCompatActivity {
         if (type == MEDIA_TYPE_IMAGE){
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +
                     "IMG_"+ timeStamp + ".jpg");
-        } else if(type == MEDIA_TYPE_VIDEO) {
-            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    "VID_"+ timeStamp + ".mp4");
         } else {
             return null;
         }
