@@ -37,6 +37,18 @@ public class NoteDatabase {
         return this.database;
     }
 
+    public String saveFileName()
+    {
+        Date dt = new Date();
+        String type = ".jpg";
+        String event = MainActivity.checkClass();
+        NoteRecord nr = new NoteRecord(dt, type, event);
+        this.dataCount++;
+        this.database.add(nr);
+        FileIO.dbOutout(this.database, FileManager.DBFILENAME);
+        return nr.getFileName();
+    }
+
     public boolean addFile(String event, String type, Date timestamp) {
         NoteRecord nr = new NoteRecord(timestamp, type, event);
         this.dataCount++;
