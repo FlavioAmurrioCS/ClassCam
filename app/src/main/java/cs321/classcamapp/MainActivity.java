@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void openCamera(View view) {
-        Toast.makeText(this, "Open Camera", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, TestingPage.class);
+    public void openCameraActivity(View view) {
+        //Toast.makeText(this, "Open Camera", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, CameraActivity.class);
         startActivity(intent);
     }
 
