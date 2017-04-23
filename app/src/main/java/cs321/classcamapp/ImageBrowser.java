@@ -41,17 +41,27 @@ public class ImageBrowser extends AppCompatActivity {
         positionOpen = getIntent().getIntExtra("positionOpen", -1);
         String eventName = classSchedule.get(positionOpen).getClassName();
         notes = NoteDatabase.getFileList(eventName);
+        if(notes.size() == 0){
+            return;
+        }
         noteArray = notes.toArray(noteArray);
+
+
+
+
 
         GridView gridview = (GridView) findViewById(R.id.imageGridView);
         gridview.setAdapter(new ImageBrowserAdapter(ImageBrowser.this));
-
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Toast.makeText(ImageBrowser.this, "" + position, Toast.LENGTH_SHORT).show();
                 Toast.makeText(ImageBrowser.this, "This was the " + positionOpen + " position FOLDER.", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+
     }
 
     public static int getPositionOpen(){
