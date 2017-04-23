@@ -9,7 +9,7 @@ import java.util.Date;
 
 public class NoteDatabase {
     private String folderName;
-    private ArrayList<NoteRecord> database;
+    private static ArrayList<NoteRecord> database;
     private int dataCount = 0;
 
     public NoteDatabase(String fileIO) {
@@ -23,7 +23,7 @@ public class NoteDatabase {
         return this.dataCount;
     }
 
-    public ArrayList<NoteRecord> getFileList(String event) {
+    public static ArrayList<NoteRecord> getFileList(String event) {
         ArrayList<NoteRecord> retList = new ArrayList<NoteRecord>();
         for (int i = database.size() - 1; i > -1; i--) {
             if (database.get(i).getEvent().equals(event)) {

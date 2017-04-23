@@ -1,11 +1,18 @@
 package cs321.classcamapp;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+
+import java.io.File;
+import java.util.ArrayList;
+
+import static cs321.classcamapp.MainActivity.classSchedule;
 
 /**
  * Created by Jonathan on 4/22/2017.
@@ -19,7 +26,7 @@ public class ImageBrowserAdapter extends BaseAdapter {
         }
 
         public int getCount() {
-            return mThumbIds.length;
+            return ImageBrowser.getNoteArray().length;
         }
 
         public Object getItem(int position) {
@@ -42,34 +49,23 @@ public class ImageBrowserAdapter extends BaseAdapter {
             } else {
                 imageView = (ImageView) convertView;
             }
-            imageView.setImageResource(mThumbIds[position]);
+
+//            int folderPosition = ImageBrowser.getPositionOpen();
+//            String eventName = classSchedule.get(folderPosition).getClassName();
+//            ArrayList<NoteRecord> notes = NoteDatabase.getFileList(eventName);
+
+            //TODO Put this in
+            //try this one instead
+
+            File imageFile = new File(ImageBrowser.getNoteArray()[position].getFileName());
+            Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+            imageView.setImageBitmap(bitmap);
             return imageView;
+
+//            //TODO take this out
+//            imageView.setImageResource(mThumbIds[position]);
+//            return imageView;
         }
 //    public Object[] getImageList
-
-        // references to our images
-        private Integer[] mThumbIds = {
-                R.drawable.fileicon, R.drawable.sample_3,
-                R.drawable.sample_4, R.drawable.sample_5,
-                R.drawable.sample_6, R.drawable.sample_7,
-                R.drawable.sample_0, R.drawable.sample_1,
-                R.drawable.sample_2, R.drawable.sample_3,
-                R.drawable.sample_4, R.drawable.sample_5,
-                R.drawable.sample_6, R.drawable.sample_7,
-                R.drawable.sample_0, R.drawable.sample_1,
-                R.drawable.sample_2, R.drawable.sample_3,
-                R.drawable.sample_4, R.drawable.sample_5,
-
-                R.drawable.sample_4, R.drawable.sample_5,
-                R.drawable.sample_6, R.drawable.sample_7,
-                R.drawable.sample_0, R.drawable.sample_1,
-                R.drawable.sample_2, R.drawable.sample_3,
-                R.drawable.sample_4, R.drawable.sample_5,
-                R.drawable.sample_6, R.drawable.sample_7,
-                R.drawable.sample_0, R.drawable.sample_1,
-                R.drawable.sample_2, R.drawable.sample_3,
-                R.drawable.sample_4, R.drawable.sample_5,
-                R.drawable.sample_6, R.drawable.sample_7
-        };
 
 }
