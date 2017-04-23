@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
-            android:onClick="openCamera"
+            android:onClick="openCameraActivity"
             app:srcCompat="@drawable/cameraicon"
             tools:layout_editor_absoluteX="45dp"
             tools:layout_editor_absoluteY="16dp" />

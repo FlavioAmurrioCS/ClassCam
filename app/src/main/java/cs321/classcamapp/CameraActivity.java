@@ -1,15 +1,13 @@
 package cs321.classcamapp;
 
-import android.content.Context;
-import android.content.pm.PackageManager;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import java.io.File;
@@ -19,22 +17,37 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE;
-
-public class CameraScreen extends AppCompatActivity {
+public class CameraActivity extends AppCompatActivity {
 
     private Camera mCamera;
     private CameraPreview mPreview;
     private static final String TAG = "CameraScreen";
+    public static final int MEDIA_TYPE_IMAGE = 1;
+    public static final int MEDIA_TYPE_VIDEO = 2;
 
-    private boolean checkCameraHardware(Context context) {
-        if (context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA)){
-            // this device has a camera
-            return true;
-        } else {
-            // no camera on this device
-            return false;
-        }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_camera_activity);
+
+        // Create an instance of Camera
+        mCamera = getCameraInstance();
+
+        // Create our Preview view and set it as the content of our activity.
+        mPreview = new CameraPreview(this, mCamera);
+        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
+        preview.addView(mPreview);
+        //mCamera.open();
+        Button captureButton = (Button) findViewById(R.id.button_capture);
+        captureButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // get an image from the camera
+                        mCamera.takePicture(null, null, mPicture);
+                    }
+                }
+        );
     }
 
     public static Camera getCameraInstance(){
@@ -46,20 +59,6 @@ public class CameraScreen extends AppCompatActivity {
             // Camera is not available (in use or does not exist)
         }
         return c; // returns null if camera is unavailable
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        // Create an instance of Camera
-        mCamera = getCameraInstance();
-
-        // Create our Preview view and set it as the content of our activity.
-        mPreview = new CameraPreview(this, mCamera);
-        FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
-        preview.addView(mPreview);
     }
 
     private Camera.PictureCallback mPicture = new Camera.PictureCallback() {
@@ -95,8 +94,6 @@ public class CameraScreen extends AppCompatActivity {
         }
     }
 
-    public static final int MEDIA_TYPE_IMAGE = 1;
-    public static final int MEDIA_TYPE_VIDEO = 2;
 
     /** Create a file Uri for saving an image or video */
     private static Uri getOutputMediaFileUri(int type){
