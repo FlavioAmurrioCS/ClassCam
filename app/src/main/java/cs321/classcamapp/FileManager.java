@@ -53,10 +53,12 @@ public class FileManager extends AppCompatActivity {
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 //                Toast.makeText(FileManager.this, "" + position, Toast.LENGTH_SHORT).show();
+                if(classSchedule.size() > position){
+                    Intent browserIntent = new Intent(FileManager.this, ImageBrowser.class);
+                    browserIntent.putExtra("positionOpen", position);
+                    startActivity(browserIntent);
+                }
 
-                Intent browserIntent = new Intent(FileManager.this, ImageBrowser.class);
-                browserIntent.putExtra("positionOpen", position);
-                startActivity(browserIntent);
 //                Toast.makeText(FileManager.this, "well nothing happened?", Toast.LENGTH_SHORT).show();
 
             }
