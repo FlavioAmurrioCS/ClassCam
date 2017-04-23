@@ -13,13 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import static cs321.classcamapp.MainActivity.classSchedule;
 
 public class ImageBrowser extends AppCompatActivity {
 
-    private int positionOpen;
-
+    private static int positionOpen;
+    private static ArrayList<NoteRecord> notes;
+    private static NoteRecord[] noteArray;
     public static String DBFILENAME = getFolderName() + "/" + "NoteDataBase.txt";
     public static NoteDatabase NTDB = new NoteDatabase(DBFILENAME);
 
@@ -36,14 +38,30 @@ public class ImageBrowser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_browser);
 
+        positionOpen = getIntent().getIntExtra("positionOpen", -1);
+        String eventName = classSchedule.get(positionOpen).getClassName();
+        notes = NoteDatabase.getFileList(eventName);
+        noteArray = notes.toArray(noteArray);
+
         GridView gridview = (GridView) findViewById(R.id.imageGridView);
         gridview.setAdapter(new ImageBrowserAdapter(ImageBrowser.this));
 
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Toast.makeText(ImageBrowser.this, "" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ImageBrowser.this, "This was the " + positionOpen + " position FOLDER.", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    public static int getPositionOpen(){
+        return positionOpen;
+    }
+
+    public static NoteRecord[] getNoteArray(){
+        return noteArray;
+    }
+
+
+
 }

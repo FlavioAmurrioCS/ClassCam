@@ -55,7 +55,7 @@ public class FileManager extends AppCompatActivity {
 //                Toast.makeText(FileManager.this, "" + position, Toast.LENGTH_SHORT).show();
 
                 Intent browserIntent = new Intent(FileManager.this, ImageBrowser.class);
-                browserIntent.putExtra("position", position);
+                browserIntent.putExtra("positionOpen", position);
                 startActivity(browserIntent);
 //                Toast.makeText(FileManager.this, "well nothing happened?", Toast.LENGTH_SHORT).show();
 
