@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         classSchedule = Schedule.classDBInput(classDB);
 //        if(classSchedule.isEmpty())
 //        {
-            classSchedule.add(new Schedule());
-            classSchedule.add(new Schedule());
-            classSchedule.get(0).setClassName("CS321");
-            classSchedule.get(1).setClassName("CLAS 260");
+//            classSchedule.add(new Schedule());
+//            classSchedule.add(new Schedule());
+//            classSchedule.get(0).setClassName("CS321");
+//            classSchedule.get(1).setClassName("CLAS 260");
 //        }
 
 //        // takes user to scheduler the first time they start the application
