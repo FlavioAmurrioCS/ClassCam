@@ -24,6 +24,11 @@ public class CameraActivity extends AppCompatActivity {
     private static final String TAG = "CameraScreen";
     public static final int MEDIA_TYPE_IMAGE = 1;
 
+
+    public CameraActivity()
+    {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +69,7 @@ public class CameraActivity extends AppCompatActivity {
 
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
+
             File pictureFile = null;
             try {
                 pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
@@ -121,8 +127,9 @@ public class CameraActivity extends AppCompatActivity {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         File mediaFile;
         if (type == MEDIA_TYPE_IMAGE){
+            String filename = MainActivity.noteDB.saveFileName();
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    "IMG_"+ timeStamp + ".jpg");
+                    filename);
         } else {
             return null;
         }
