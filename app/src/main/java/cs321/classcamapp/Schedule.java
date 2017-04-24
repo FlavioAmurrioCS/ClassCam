@@ -44,19 +44,26 @@ public class Schedule {
 //        CS321 - [Mon, Wed]
 //        Time: 1:30 - 2:30
 //        Date: 01/21/2018 - 03/23/2018
+       String s_Min = String.valueOf(startMin);
+       String e_Min = String.valueOf(endMin);
+       if(startMin<10)
+           s_Min = "0" + s_Min;
+       if(endMin<10)
+           e_Min = "0" + e_Min;
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(this.className + " - ");
-        sb.append(week.toString() +"\n");
-        sb.append("Time: " + this.startHour+ ":" + startMin + " - " + this.endHour + ":" +endMin+"\n");
-        sb.append(dateToString(this.startDate) + " - " + dateToString(this.endDate));
-        return sb.toString();
+       StringBuilder sb = new StringBuilder();
+       sb.append(this.className + " - ");
+       sb.append(week.toString() +"\n");
+       sb.append("Time: " + this.startHour+ ":" + s_Min + " - " + this.endHour + ":" +e_Min+"\n");
+       sb.append(dateToString(this.startDate) + " - " + dateToString(this.endDate));
+       return sb.toString();
     }
 
     private String dateToString(Date dt)
     {
         StringBuilder sb = new StringBuilder();
         sb.append((dt.getDate()) + "/");
+        sb.append(dt.getMonth() + "/");
         sb.append((dt.getYear() + 1900));
         return sb.toString();
     }
@@ -182,10 +189,4 @@ public class Schedule {
         }//end for loop
         outputStream.close();
     }
-
-
-
-
-
-
 }

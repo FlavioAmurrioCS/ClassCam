@@ -25,13 +25,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         classSchedule = Schedule.classDBInput(classDB);
-//        if(classSchedule.isEmpty())
-//        {
-//            classSchedule.add(new Schedule());
-//            classSchedule.add(new Schedule());
-//            classSchedule.get(0).setClassName("CS321");
-//            classSchedule.get(1).setClassName("CLAS 260");
-//        }
+        if(classSchedule.isEmpty())
+        {
+            Schedule cl = new Schedule();
+            cl.setClassName("unOrganized");
+            cl.setStartDate(new Date(116, 0, 1));
+            cl.setEndDate(new Date(119, 11, 30));
+            cl.setStartHour(1);
+            cl.setStartMin(00);
+            cl.setEndHour(23);
+            cl.setEndMin(59);
+            cl.addWeek("Mon");
+            cl.addWeek("Tue");
+            cl.addWeek("Wed");
+            cl.addWeek("Thur");
+            cl.addWeek("Fri");
+            cl.addWeek("Sat");
+            cl.addWeek("Sun");
+            classSchedule.add(cl);
+            Schedule.classDBOutout(classSchedule, classDB);
+        }
 
 //        // takes user to scheduler the first time they start the application
 //        if(classSchedule.size() == 0){
@@ -91,12 +104,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         // hello
-        return "";
+        return "UnOrganized";
     }
 
     public static boolean currentlyClassPeriod(){
         String className = checkClass();
-        if(className.equals("")){
+        if(className.equals("UnOrganized")){
             return false;
         }
         return true;
