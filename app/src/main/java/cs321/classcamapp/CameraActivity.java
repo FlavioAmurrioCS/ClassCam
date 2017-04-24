@@ -129,7 +129,7 @@ public class CameraActivity extends AppCompatActivity {
         if (type == MEDIA_TYPE_IMAGE){
             String filename = MainActivity.noteDB.saveFileName();
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    filename);
+                    filename+".JPG");
         } else {
             return null;
         }
