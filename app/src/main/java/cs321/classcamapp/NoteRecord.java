@@ -67,6 +67,8 @@ public class NoteRecord {
         sb.append("_");
         sb.append("." + fileType);
         return sb.toString();
+
+        //CS321_2017_04_23_19_23_32.jpg
     }
 
     public String getEvent() {

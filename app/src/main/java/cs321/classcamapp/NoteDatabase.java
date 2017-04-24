@@ -40,7 +40,7 @@ public class NoteDatabase {
     public String saveFileName()
     {
         Date dt = new Date();
-        String type = ".jpg";
+        String type = "jpg";
         String event = MainActivity.checkClass();
         NoteRecord nr = new NoteRecord(dt, type, event);
         this.dataCount++;
