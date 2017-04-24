@@ -58,6 +58,7 @@
                 android:value="cs321.classcamapp.MainActivity" />
         </activity>
         <activity android:name=".ImageBrowser" />
+        <activity android:name=".ImageViewer"></activity>
     </application>
 
 </manifest>
