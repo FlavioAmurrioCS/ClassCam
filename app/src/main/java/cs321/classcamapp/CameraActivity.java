@@ -71,7 +71,6 @@ public class CameraActivity extends AppCompatActivity {
 
         @Override
         public void onPictureTaken(byte[] data, Camera camera) {
-
             File pictureFile = null;
             try {
                 pictureFile = getOutputMediaFile(MEDIA_TYPE_IMAGE);
