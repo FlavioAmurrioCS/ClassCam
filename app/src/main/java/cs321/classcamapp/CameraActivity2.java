@@ -18,13 +18,15 @@ package cs321.classcamapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class CameraActivity2 extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera);
+        setContentView(R.layout.activity_camera2);
+        Toast.makeText(this, "Hellow", Toast.LENGTH_SHORT).show();
         if (null == savedInstanceState) {
             getFragmentManager().beginTransaction()
                     .replace(R.id.container, Camera2BasicFragment.newInstance())
