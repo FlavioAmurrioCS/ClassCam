@@ -16,7 +16,6 @@ public class NoteDatabase {
 
     public NoteDatabase(String fileIO) {
         this.database = FileIO.dbInput(fileIO);
-        this.dataCount = this.database.size();
     }
 
 
@@ -25,9 +24,10 @@ public class NoteDatabase {
         return this.dataCount;
     }
 
-    public static ArrayList<NoteRecord> getFileList(String event) {
+    public ArrayList<NoteRecord> getFileList(String event) {
         ArrayList<NoteRecord> retList = new ArrayList<NoteRecord>();
         for (int i = database.size() - 1; i > -1; i--) {
+
             if (database.get(i).getEvent().equals(event)) {
                 retList.add(database.get(i));
             }

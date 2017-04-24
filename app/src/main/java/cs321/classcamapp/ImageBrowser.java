@@ -40,10 +40,13 @@ public class ImageBrowser extends AppCompatActivity {
 
         positionOpen = getIntent().getIntExtra("positionOpen", -1);
         String eventName = classSchedule.get(positionOpen).getClassName();
-        notes = NoteDatabase.getFileList(eventName);
+        Toast.makeText(this, eventName, Toast.LENGTH_SHORT).show();
+        notes = MainActivity.noteDB.getFileList(eventName);
         if(notes.size() == 0){
+            Toast.makeText(this, "HEllow", Toast.LENGTH_SHORT).show();
             return;
         }
+        Toast.makeText(this, "FOunf", Toast.LENGTH_SHORT).show();
         noteArray = notes.toArray(noteArray);
 
 

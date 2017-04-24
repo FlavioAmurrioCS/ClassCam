@@ -63,8 +63,9 @@ public class NoteRecord {
         sb.append("_");
         sb.append(timeStamp.getHours());
         sb.append("_");
-        sb.append((timeStamp.getSeconds()));
+        sb.append(timeStamp.getMinutes());
         sb.append("_");
+        sb.append((timeStamp.getSeconds()));
         sb.append("." + fileType);
         return sb.toString();
 
@@ -92,6 +93,11 @@ public class NoteRecord {
 
     public String getFileName() {
         return this.fileName;
+    }
+    public String getFileLink()
+    {
+        String ret = FileManager.getFolderName() + "/" + this.fileName;
+        return ret;
     }
 
     public String getFileType() {
