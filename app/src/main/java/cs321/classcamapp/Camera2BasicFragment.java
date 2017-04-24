@@ -436,7 +436,9 @@ public class Camera2BasicFragment extends Fragment
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mFile = new File(getActivity().getExternalFilesDir(null), "pic.jpg");
+//        mFile = new File(getActivity().getExternalFilesDir(null), "pic.jpg");
+        String fileName = FileManager.getFolderName() + "/" + MainActivity.noteDB.saveFileName();
+        mFile = new File(fileName);
     }
 
     @Override
