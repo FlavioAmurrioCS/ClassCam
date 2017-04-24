@@ -1,5 +1,7 @@
 package cs321.classcamapp;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Date;
 
