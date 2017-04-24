@@ -20,17 +20,13 @@
             android:id="@+id/add_bt"
             android:onClick="openAdd" />
 
-        <Button
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:text="Edit"
-            android:id="@+id/edit_bt"/>
     </LinearLayout>
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        >
     </ListView>
 
 </LinearLayout>

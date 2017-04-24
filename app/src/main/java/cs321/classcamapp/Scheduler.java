@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -29,12 +30,25 @@ public class Scheduler extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, a);
         mListView.setAdapter(arrayAdapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Toast.makeText(Scheduler.this, "", Toast.LENGTH_SHORT).show();
+                Intent e = new Intent(Scheduler.this, AddSchedule.class);
+                e.putExtra("Position", position);
+                startActivity(e);
+            }
+        });
     }
 
     public void openAdd(View view) {
         Intent intent = new Intent(this, AddSchedule.class);
+        intent.putExtra("Position", -1);
         startActivity(intent);
     }
+
+
 
 
     public static String getEvent(Date timestamp){
