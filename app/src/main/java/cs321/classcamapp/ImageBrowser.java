@@ -22,8 +22,6 @@ public class ImageBrowser extends AppCompatActivity {
     private static int positionOpen;
     private static ArrayList<NoteRecord> notes;
     private static NoteRecord[] noteArray;
-    public static String DBFILENAME = getFolderName() + "/" + "NoteDataBase.txt";
-    public static NoteDatabase NTDB = new NoteDatabase(DBFILENAME);
 
     public static String getFolderName() {
         String filePath = Environment.getExternalStorageDirectory().getPath();
@@ -47,6 +45,7 @@ public class ImageBrowser extends AppCompatActivity {
             return;
         }
         Toast.makeText(this, "FOunf", Toast.LENGTH_SHORT).show();
+        noteArray = new NoteRecord[notes.size()];
         noteArray = notes.toArray(noteArray);
 
 
