@@ -39,6 +39,11 @@ public class Schedule {
         }
     }
 
+    public void clearWeek()
+    {
+        this.week.clear();
+    }
+
     public String toListView()
    {
 //        CS321 - [Mon, Wed]
@@ -59,7 +64,7 @@ public class Schedule {
        return sb.toString();
     }
 
-    private String dateToString(Date dt)
+    public static String dateToString(Date dt)
     {
         StringBuilder sb = new StringBuilder();
         sb.append((dt.getDate()) + "/");
@@ -67,6 +72,7 @@ public class Schedule {
         sb.append((dt.getYear() + 1900));
         return sb.toString();
     }
+
 
     public String toFileString()
     {
@@ -147,6 +153,10 @@ public class Schedule {
 
     public void addWeek(String w){
         this.week.add(w);
+    }
+
+    public ArrayList<String> getWeekDay(){
+        return this.week;
     }
 
 
