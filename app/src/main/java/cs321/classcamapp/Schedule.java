@@ -63,6 +63,7 @@ public class Schedule {
     {
         StringBuilder sb = new StringBuilder();
         sb.append((dt.getDate()) + "/");
+        sb.append(dt.getMonth() + "/");
         sb.append((dt.getYear() + 1900));
         return sb.toString();
     }
