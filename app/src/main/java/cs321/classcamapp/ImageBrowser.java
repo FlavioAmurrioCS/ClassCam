@@ -40,16 +40,13 @@ public class ImageBrowser extends AppCompatActivity {
 
         positionOpen = getIntent().getIntExtra("positionOpen", -1);
         String eventName = classSchedule.get(positionOpen).getClassName();
+        setTitle(eventName);
         notes = NoteDatabase.getFileList(eventName);
         if(notes.size() == 0){
             return;
         }
+        
         noteArray = notes.toArray(noteArray);
-
-
-
-
-
         GridView gridview = (GridView) findViewById(R.id.imageGridView);
         gridview.setAdapter(new ImageBrowserAdapter(ImageBrowser.this));
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
