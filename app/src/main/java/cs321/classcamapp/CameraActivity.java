@@ -111,7 +111,7 @@ public class CameraActivity extends AppCompatActivity {
         // using Environment.getExternalStorageState() before doing this.
 
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES), "MyCameraApp");
+                Environment.DIRECTORY_PICTURES), "ClassCam");
         // This location works best if you want the created images to be shared
         // between applications and persist after your app has been uninstalled.
 
@@ -129,7 +129,7 @@ public class CameraActivity extends AppCompatActivity {
         if (type == MEDIA_TYPE_IMAGE){
             String filename = MainActivity.noteDB.saveFileName();
             mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    filename+".JPG");
+                    filename+"JPG");
         } else {
             return null;
         }
