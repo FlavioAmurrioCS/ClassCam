@@ -116,4 +116,10 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    public void newCameraOpen(View view) {
+        Toast.makeText(this, "NewCamera", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, CameraActivity2.class);
+        startActivity(intent);
+    }
 }

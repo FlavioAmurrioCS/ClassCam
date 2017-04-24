@@ -43,5 +43,12 @@
             app:srcCompat="@drawable/scheduleicon"
             tools:layout_editor_absoluteX="45dp"
             tools:layout_editor_absoluteY="168dp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New Camera"
+            android:onClick="newCameraOpen"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
