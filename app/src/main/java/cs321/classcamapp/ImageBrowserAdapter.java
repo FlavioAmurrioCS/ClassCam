@@ -56,9 +56,26 @@ public class ImageBrowserAdapter extends BaseAdapter {
 
             //TODO Put this in
             //try this one instead
-
             File imageFile = new File(ImageBrowser.getNoteArray()[position].getFileLink());
-            Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+
+
+            int tWidth = imageView.getWidth();
+            int tHeight = imageView.getHeight();
+
+            BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+            bmOptions.inJustDecodeBounds = true;
+
+            BitmapFactory.decodeFile(imageFile.getAbsolutePath(), bmOptions);
+            int pWidth = bmOptions.outWidth;
+            int pHeight = bmOptions.outHeight;
+
+            int scaleFactor = Math.min(pWidth/tWidth, pHeight/tHeight);
+
+            bmOptions.inJustDecodeBounds = false;
+            bmOptions.inSampleSize = scaleFactor;
+            bmOptions.inPurgeable = true;
+
+            Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), bmOptions);
             imageView.setImageBitmap(bitmap);
             return imageView;
 
