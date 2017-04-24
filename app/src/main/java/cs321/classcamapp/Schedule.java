@@ -189,10 +189,4 @@ public class Schedule {
         }//end for loop
         outputStream.close();
     }
-
-
-
-
-
-
 }
