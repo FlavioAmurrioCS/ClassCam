@@ -118,7 +118,7 @@ public class CameraActivity extends AppCompatActivity {
         // Create the storage directory if it does not exist
         if (! mediaStorageDir.exists()){
             if (! mediaStorageDir.mkdirs()){
-                Log.d("MyCameraApp", "failed to create directory");
+                Log.d("ClassCam", "failed to create directory");
                 return null;
             }
         }
