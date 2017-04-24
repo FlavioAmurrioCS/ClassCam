@@ -41,10 +41,8 @@ public class ImageBrowser extends AppCompatActivity {
         Toast.makeText(this, eventName, Toast.LENGTH_SHORT).show();
         notes = MainActivity.noteDB.getFileList(eventName);
         if(notes.size() == 0){
-            Toast.makeText(this, "HEllow", Toast.LENGTH_SHORT).show();
             return;
         }
-        Toast.makeText(this, "FOunf", Toast.LENGTH_SHORT).show();
         noteArray = new NoteRecord[notes.size()];
         noteArray = notes.toArray(noteArray);
 
