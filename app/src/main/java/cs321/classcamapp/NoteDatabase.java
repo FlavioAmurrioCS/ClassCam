@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Flavi on 3/30/2017.
  */
-
+//Hello
 public class NoteDatabase {
     private String folderName;
     private static ArrayList<NoteRecord> database;
