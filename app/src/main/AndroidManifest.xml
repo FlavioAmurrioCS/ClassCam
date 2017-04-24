@@ -58,11 +58,6 @@
                 android:value="cs321.classcamapp.MainActivity" />
         </activity>
         <activity android:name=".ImageBrowser" />
-        <activity android:name=".edit_schedule" />
-        <activity
-            android:name=".ImageView"
-            android:label="@string/title_activity_image_view"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

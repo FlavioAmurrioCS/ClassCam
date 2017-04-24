@@ -17,9 +17,9 @@ import static cs321.classcamapp.R.id.gridview;
 import java.util.*;
 
 public class FileManager extends AppCompatActivity {
-
-    public static String DBFILENAME = getFolderName() + "/" + "NoteDataBase.txt";
-    public static NoteDatabase NTDB = new NoteDatabase(DBFILENAME);
+//
+//    public static String DBFILENAME = getFolderName() + "/" + "NoteDataBase.txt";
+//    public static NoteDatabase NTDB = new NoteDatabase(DBFILENAME);
     GridView grid;
     private Object ArrayList;
 

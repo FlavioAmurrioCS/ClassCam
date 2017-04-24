@@ -43,7 +43,7 @@ public class FileIO {
         }
         for (int i = 0; i < arr.size(); i++)
         {
-            outputStream.print(arr.get(i).toDatabase());
+            outputStream.println(arr.get(i).toDatabase());
         }//end for loop
         outputStream.close();
     }
