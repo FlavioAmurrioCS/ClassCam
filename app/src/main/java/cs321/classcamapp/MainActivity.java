@@ -17,18 +17,20 @@ public class MainActivity extends AppCompatActivity {
 
     //arrayList of schedules(className, startDate, endDate, startHour, startMinute, endHour, endMinute (base 24)
     static ArrayList<Schedule> classSchedule;
-    public static NoteDatabase noteDB = new NoteDatabase(noteDBName);
+    public static NoteDatabase noteDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        noteDB = new NoteDatabase(noteDBName);
+
         classSchedule = Schedule.classDBInput(classDB);
         if(classSchedule.isEmpty())
         {
             Schedule cl = new Schedule();
-            cl.setClassName("unOrganized");
+            cl.setClassName("UnOrganized");
             cl.setStartDate(new Date(116, 0, 1));
             cl.setEndDate(new Date(119, 11, 30));
             cl.setStartHour(1);
@@ -113,5 +115,11 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    public void newCameraOpen(View view) {
+        Toast.makeText(this, "NewCamera", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, CameraActivity2.class);
+        startActivity(intent);
     }
 }

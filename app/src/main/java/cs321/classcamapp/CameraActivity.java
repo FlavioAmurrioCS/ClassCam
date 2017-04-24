@@ -126,11 +126,13 @@ public class CameraActivity extends AppCompatActivity {
 
         // Create a media file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+//        String fileName = MainActivity.noteDB.saveFileName();
+        String fileName = FileManager.getFolderName() + "/" + MainActivity.noteDB.saveFileName();
         File mediaFile;
         if (type == MEDIA_TYPE_IMAGE){
-            String filename = MainActivity.noteDB.saveFileName();
-            mediaFile = new File(mediaStorageDir.getPath() + File.separator +
-                    filename+"JPG");
+            mediaFile = new File (fileName);
+            //mediaFile = new File(mediaStorageDir.getPath() + File.separator + fileName);
+//                    "IMG_"+ timeStamp + ".jpg");
         } else {
             return null;
         }

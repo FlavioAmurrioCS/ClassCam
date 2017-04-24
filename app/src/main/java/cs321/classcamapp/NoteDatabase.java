@@ -8,26 +8,25 @@ import java.util.Date;
 /**
  * Created by Flavi on 3/30/2017.
  */
-
+//Hello
 public class NoteDatabase {
     private String folderName;
     private static ArrayList<NoteRecord> database;
-    private int dataCount = 0;
 
     public NoteDatabase(String fileIO) {
         this.database = FileIO.dbInput(fileIO);
-        this.dataCount = this.database.size();
     }
 
 
 
     public int getSize() {
-        return this.dataCount;
+        return this.database.size();
     }
 
-    public static ArrayList<NoteRecord> getFileList(String event) {
+    public ArrayList<NoteRecord> getFileList(String event) {
         ArrayList<NoteRecord> retList = new ArrayList<NoteRecord>();
         for (int i = database.size() - 1; i > -1; i--) {
+
             if (database.get(i).getEvent().equals(event)) {
                 retList.add(database.get(i));
             }
@@ -45,40 +44,39 @@ public class NoteDatabase {
         String type = "jpg";
         String event = MainActivity.checkClass();
         NoteRecord nr = new NoteRecord(dt, type, event);
-        this.dataCount++;
         this.database.add(nr);
-        FileIO.dbOutout(this.database, FileManager.DBFILENAME);
+        FileIO.dbOutout(this.database, MainActivity.noteDBName);
         return nr.getFileName();
+
     }
 
     public boolean addFile(String event, String type, Date timestamp) {
         NoteRecord nr = new NoteRecord(timestamp, type, event);
-        this.dataCount++;
         this.database.add(nr);
-        FileIO.dbOutout(this.database, FileManager.DBFILENAME);
+        FileIO.dbOutout(this.database, MainActivity.noteDBName);
         return true;
     }
 
     // Adding a file with only a timestamp
     public boolean addFile(Date timestamp){
         NoteRecord nr = new NoteRecord(timestamp, ".jpg", Scheduler.getEvent(timestamp));
-        this.dataCount++;
+//        this.dataCount++;
         this.database.add(nr);
-        FileIO.dbOutout(this.database, FileManager.DBFILENAME);
+        FileIO.dbOutout(this.database, MainActivity.noteDBName);
         return true;
     }
 
     public ArrayList<NoteRecord> search(ArrayList<String> tags, String event) {
         ArrayList<NoteRecord> toSearch = new ArrayList<>();
         if (event != null || event.equals("")) {
-            for (int i = 0; i < FileManager.NTDB.dataCount; i++) {
+            for (int i = 0; i < MainActivity.noteDB.getSize(); i++) {
                 NoteRecord nr = this.database.get(i);
                 if (nr.getEvent().equals(event) && nr.getTags().containsAll(tags)) {
                     toSearch.add(nr);
                 }
             }
         } else {
-            for (int i = 0; i < FileManager.NTDB.dataCount; i++) {
+            for (int i = 0; i < MainActivity.noteDB.getSize(); i++) {
                 NoteRecord nr = this.database.get(i);
                 if (nr.getTags().containsAll(tags)) {
                     toSearch.add(nr);
@@ -89,9 +87,9 @@ public class NoteDatabase {
     }
 
     public boolean removeFile(NoteRecord nr) {
-        dataCount--;
+//        dataCount--;
         this.database.remove(nr);
-        FileIO.dbOutout(this.database, FileManager.DBFILENAME);
+        FileIO.dbOutout(this.database, MainActivity.noteDBName);
         return true;
     }
 
