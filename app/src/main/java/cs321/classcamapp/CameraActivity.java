@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -49,6 +50,7 @@ public class CameraActivity extends AppCompatActivity {
                         public void onClick(View v) {
                             // get an image from the camera
                             mCamera.takePicture(null, null, mPicture);
+                            Toast.makeText(CameraActivity.this, "Saved to " + MainActivity.checkClass(), Toast.LENGTH_SHORT).show();
                         }
                     }
             );

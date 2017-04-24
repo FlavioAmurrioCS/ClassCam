@@ -1,5 +1,7 @@
 package cs321.classcamapp;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,7 +42,7 @@ public class NoteDatabase {
     public String saveFileName()
     {
         Date dt = new Date();
-        String type = ".jpg";
+        String type = "jpg";
         String event = MainActivity.checkClass();
         NoteRecord nr = new NoteRecord(dt, type, event);
         this.dataCount++;
