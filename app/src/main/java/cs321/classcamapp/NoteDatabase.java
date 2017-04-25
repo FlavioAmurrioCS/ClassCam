@@ -57,9 +57,9 @@ public class NoteDatabase {
         return true;
     }
 
-    // Adding a file with only a timestamp
+    //Adding a file with only a timestamp
     public boolean addFile(Date timestamp){
-        NoteRecord nr = new NoteRecord(timestamp, ".jpg", Scheduler.getEvent(timestamp));
+        NoteRecord nr = new NoteRecord(timestamp, ".jpg", MainActivity.checkClass());
 //        this.dataCount++;
         this.database.add(nr);
         FileIO.dbOutout(this.database, MainActivity.noteDBName);

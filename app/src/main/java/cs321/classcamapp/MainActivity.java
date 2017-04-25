@@ -92,20 +92,29 @@ public class MainActivity extends AppCompatActivity {
     public static String checkClass(){
         Date dt = new Date();
         Schedule s;
-        for(int i=0; i < classSchedule.size() - 1; i++){
+
+//        for (int i = database.size() - 1; i > -1; i--) {
+        for(int i=classSchedule.size()-1; i > -1; i--){
+//        for(int i=0; i < classSchedule.size() - 1; i++){
             s = classSchedule.get(i);
             int currentHour = dt.getHours();
             int currentMin = dt.getMinutes();
             if(dt.after(s.getStartDate()) && dt.before(s.getEndDate())){    //within callender date
-                if(( currentHour >= s.getStartHour()) && currentHour <= s.getEndHour()){    // within class period hour
-                    if(currentMin >= s.getStartMin() && currentMin <= s.getEndMin()){
-                        // If I get here then the we have verified that we are currently in s class
-                        return s.getClassName();
-                    }
+                if(( currentHour > s.getStartHour()) && currentHour < s.getEndHour()) {    // within class period hour
+                    return s.getClassName();
+                }
+            } else if (currentHour == s.getStartHour()){
+                if(currentMin > s.getStartMin()){
+                    return s.getClassName();
+                }
+            } else if (currentHour == s.getEndHour()){
+                if(currentMin < s.getStartMin()){
+                    return s.getClassName();
                 }
             }
+
         }
-        // hello
+
         return "UnOrganized";
     }
 

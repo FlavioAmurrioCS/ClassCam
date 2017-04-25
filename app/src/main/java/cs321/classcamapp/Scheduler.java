@@ -51,10 +51,10 @@ public class Scheduler extends AppCompatActivity {
 
 
 
-    public static String getEvent(Date timestamp){
-        //given a timestamp, goes through scheudle and returns class (ex. CS321)
-        String event = "";
-
-        return event;
-    }
+//    public static String getEvent(Date timestamp){
+//        //given a timestamp, goes through scheudle and returns class (ex. CS321)
+//        String event = "";
+//
+//        return event;
+//    }
 }

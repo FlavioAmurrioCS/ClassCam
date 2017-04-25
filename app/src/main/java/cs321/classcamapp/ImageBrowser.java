@@ -65,9 +65,10 @@ public class ImageBrowser extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 //                Toast.makeText(ImageBrowser.this, "" + position, Toast.LENGTH_SHORT).show();
 //                Toast.makeText(ImageBrowser.this, "This was the " + positionOpen + " position FOLDER.", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(ImageBrowser.this, ImageViewer.class);
-                intent.putExtra("position", position);
-                startActivity(intent);
+                
+//                Intent intent = new Intent(ImageBrowser.this, ImageViewer.class);
+//                intent.putExtra("position", position);
+//                startActivity(intent);
 
                 Intent bigView = new Intent(ImageBrowser.this, bigImageView.class);
                 bigView.putExtra("position", position);
