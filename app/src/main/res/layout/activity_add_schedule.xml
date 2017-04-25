@@ -135,7 +135,7 @@
             android:layout_marginTop="18dp"
             android:id="@+id/checkBox2" />
         <CheckBox
-            android:text="Thurd"
+            android:text="Thurs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editText6"
@@ -203,7 +203,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cancel_bt"
-            android:text="Cancel"/>
+            android:text="Cancel"
+            android:onClick="cancleClick"/>
+
     </LinearLayout>
 
 </LinearLayout>

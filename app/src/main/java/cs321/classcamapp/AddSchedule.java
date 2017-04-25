@@ -27,6 +27,8 @@ public class AddSchedule extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_schedule);
 
+        p = getIntent().getIntExtra("Position", -1);
+        Toast.makeText(this, "THIS IS THE POSITION WE GOT: " + p, Toast.LENGTH_SHORT).show();
         Mon = (CheckBox)findViewById(R.id.checkBox);
         Tue = (CheckBox)findViewById(R.id.checkBox1);
         Wed = (CheckBox)findViewById(R.id.checkBox2);
@@ -44,35 +46,31 @@ public class AddSchedule extends AppCompatActivity {
         save = (Button)findViewById(R.id.save_bt);
         cancel = (Button)findViewById(R.id.cancel_bt);
 
-        p = getIntent().getIntExtra("Position", -1);
         if(p > -1){
             Schedule temp = MainActivity.classSchedule.get(p);
             name.setText(temp.getClassName());
             date_start.setText(Schedule.dateToString(temp.getStartDate()));
             date_end.setText(Schedule.dateToString(temp.getEndDate()));
-            String time = temp.getStartHour() + ":" + temp.getStartMin() + " - " + temp.getEndHour()
-                    + ":" + temp.getEndMin();
-            time_start.setText(time);
-            ArrayList<String> w = temp.getWeekDay();
-            int i = 0;
-            while(i < w.size()){
-                if(w.get(i).equals("Mon"))
+            time_start.setText(temp.getStartHour() + ":" + temp.getStartMin());
+            time_end.setText(temp.getEndHour() + ":" + temp.getEndMin());
+            ArrayList<String> days = temp.getWeekDay();
+            for(int i=0; i<days.size(); i++){
+                if(days.get(i).equals("Mon"))
                     Mon.setChecked(true);
-                else if(w.get(i).equals("Tue"))
+                else if(days.get(i).equals("Tue"))
                     Tue.setChecked(true);
-                else if(w.get(i).equals("Wed"))
+                else if(days.get(i).equals("Wed"))
                     Wed.setChecked(true);
-                else if(w.get(i).equals("Thurs"))
+                else if(days.get(i).equals("Thur"))
                     Thurs.setChecked(true);
-                else if(w.get(i).equals("Fri"))
+                else if(days.get(i).equals("Fri"))
                     Fri.setChecked(true);
-                else if(w.get(i).equals("Sat"))
+                else if(days.get(i).equals("Sat"))
                     Sat.setChecked(true);
-                else if(w.get(i).equals("Sun"))
+                else if(days.get(i).equals("Sun"))
                     Sun.setChecked(true);
             }
         }
-
     }
 
 
@@ -135,7 +133,7 @@ public class AddSchedule extends AppCompatActivity {
         if(Wed.isChecked())
              cb.add ("Wed");
         if(Thurs.isChecked())
-             cb.add ("Thur");
+             cb.add ("Thurd");
         if(Fri.isChecked())
              cb.add ("Fri");
         if(Sat.isChecked())
@@ -144,7 +142,11 @@ public class AddSchedule extends AppCompatActivity {
              cb.add ("Sun");
         return  cb;
     }
-
+    public void cancleClick(View view){
+        Intent intent = new Intent(this, Scheduler.class);
+        startActivity(intent);
+        finish();
+    }
     public void saveMethod(View view) {
 
         String sName = name.getText().toString();
@@ -200,10 +202,7 @@ public class AddSchedule extends AppCompatActivity {
             Intent in = new Intent(this, Scheduler.class);
             in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(in);
-
-
-
-
+            finish();
     }
 
     public Date stringToDate(String str){
