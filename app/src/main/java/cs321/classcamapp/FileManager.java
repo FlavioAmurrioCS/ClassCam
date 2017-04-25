@@ -34,7 +34,7 @@ public class FileManager extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_manager);
-
+        setTitle("Class Browser");
         if(classSchedule.size() > 0) {
             CustomGrid adapter = new CustomGrid(FileManager.this, getClassNames(classSchedule), getFolders(classSchedule));
             grid = (GridView) findViewById(R.id.gridview);

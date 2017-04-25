@@ -14,18 +14,22 @@ import java.io.File;
 public class ImageViewer extends AppCompatActivity {
 
     ImageView selectedImage;
-
+    int positionOpened;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_viewer);
-
+        positionOpened = getIntent().getIntExtra("position", 0);
 
         Gallery gallery = (Gallery) findViewById(R.id.gallery);
         selectedImage = (ImageView) findViewById(R.id.imageView);
         gallery.setSpacing(1);
         final ImageViewAdapter imageViewAdapter = new ImageViewAdapter(this);
         gallery.setAdapter(imageViewAdapter);
+
+        File imageFile = new File(ImageBrowser.getNoteArray()[positionOpened].getFileLink());
+        Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
+//        selectedImage.setImageBitmap(bitmap);
 
 
         gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -35,9 +39,9 @@ public class ImageViewer extends AppCompatActivity {
                 Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
                 selectedImage.setImageBitmap(bitmap);
 
-                // show the selected Image
+        // show the selected Image
 //                selectedImage.setImageResource(ImageViewAdapter.mImageIds[position]);
-            }
-        });
+    }
+});
     }
 }

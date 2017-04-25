@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -59,15 +60,17 @@ public class ImageBrowserAdapter extends BaseAdapter {
             File imageFile = new File(ImageBrowser.getNoteArray()[position].getFileLink());
 
 
-            int tWidth = imageView.getWidth();
-            int tHeight = imageView.getHeight();
-
+//            int tWidth = imageView.getWidth();
+//            int tHeight = imageView.getHeight();
+            int tWidth = 250;
+            int tHeight = 250;
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
             bmOptions.inJustDecodeBounds = true;
-
+//
             BitmapFactory.decodeFile(imageFile.getAbsolutePath(), bmOptions);
             int pWidth = bmOptions.outWidth;
             int pHeight = bmOptions.outHeight;
+
 
             int scaleFactor = Math.min(pWidth/tWidth, pHeight/tHeight);
 
@@ -76,12 +79,13 @@ public class ImageBrowserAdapter extends BaseAdapter {
             bmOptions.inPurgeable = true;
 
             Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), bmOptions);
+//            Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
             imageView.setImageBitmap(bitmap);
             return imageView;
 
 //            //TODO take this out
 //            imageView.setImageResource(mThumbIds[position]);
-//            return imageView;
+//            return imageView;//
         }
 //    public Object[] getImageList
 
