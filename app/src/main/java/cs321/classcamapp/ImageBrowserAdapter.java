@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -43,9 +44,10 @@ public class ImageBrowserAdapter extends BaseAdapter {
             if (convertView == null) {
                 // if it's not recycled, initialize some attributes
                 imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(185, 185));
+                imageView.setLayoutParams(new GridView.LayoutParams(500, 500));
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 imageView.setPadding(8, 8, 8, 8);
+                imageView.setRotation(90);
             } else {
                 imageView = (ImageView) convertView;
             }
@@ -59,15 +61,17 @@ public class ImageBrowserAdapter extends BaseAdapter {
             File imageFile = new File(ImageBrowser.getNoteArray()[position].getFileLink());
 
 
-            int tWidth = imageView.getWidth();
-            int tHeight = imageView.getHeight();
-
+//            int tWidth = imageView.getWidth();
+//            int tHeight = imageView.getHeight();
+            int tWidth = 400;
+            int tHeight = 400;
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
             bmOptions.inJustDecodeBounds = true;
-
+//
             BitmapFactory.decodeFile(imageFile.getAbsolutePath(), bmOptions);
             int pWidth = bmOptions.outWidth;
             int pHeight = bmOptions.outHeight;
+
 
             int scaleFactor = Math.min(pWidth/tWidth, pHeight/tHeight);
 
@@ -76,12 +80,14 @@ public class ImageBrowserAdapter extends BaseAdapter {
             bmOptions.inPurgeable = true;
 
             Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), bmOptions);
+//            Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
             imageView.setImageBitmap(bitmap);
+
             return imageView;
 
 //            //TODO take this out
 //            imageView.setImageResource(mThumbIds[position]);
-//            return imageView;
+//            return imageView;//
         }
 //    public Object[] getImageList
 

@@ -34,7 +34,7 @@ public class Scheduler extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Toast.makeText(Scheduler.this, "", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Scheduler.this, "CLICKED THIS POSITION: " + position, Toast.LENGTH_SHORT).show();
                 Intent e = new Intent(Scheduler.this, AddSchedule.class);
                 e.putExtra("Position", position);
                 startActivity(e);
@@ -51,10 +51,10 @@ public class Scheduler extends AppCompatActivity {
 
 
 
-    public static String getEvent(Date timestamp){
-        //given a timestamp, goes through scheudle and returns class (ex. CS321)
-        String event = "";
-
-        return event;
-    }
+//    public static String getEvent(Date timestamp){
+//        //given a timestamp, goes through scheudle and returns class (ex. CS321)
+//        String event = "";
+//
+//        return event;
+//    }
 }

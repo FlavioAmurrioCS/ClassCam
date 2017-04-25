@@ -6,14 +6,16 @@
     android:layout_height="match_parent"
     tools:context="cs321.classcamapp.ImageBrowser">
 
+
+
     <GridView
         android:id="@+id/imageGridView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnWidth="150dp"
+        android:layout_width="368dp"
+        android:layout_height="495dp"
+        android:columnWidth="125dp"
         android:numColumns="auto_fit"
-        android:verticalSpacing="0dp"
-        android:horizontalSpacing="0dp"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
         tools:layout_editor_absoluteY="8dp"

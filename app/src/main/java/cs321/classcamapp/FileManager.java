@@ -35,6 +35,12 @@ public class FileManager extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_manager);
 
+        setTitle("Class Browser");
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         if(classSchedule.size() > 0) {
             CustomGrid adapter = new CustomGrid(FileManager.this, getClassNames(classSchedule), getFolders(classSchedule));
             grid = (GridView) findViewById(R.id.gridview);
@@ -65,8 +71,7 @@ public class FileManager extends AppCompatActivity {
         });
 
 
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -76,7 +81,7 @@ public class FileManager extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//
     }
 
 

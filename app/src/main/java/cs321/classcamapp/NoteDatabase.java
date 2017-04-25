@@ -2,6 +2,7 @@ package cs321.classcamapp;
 
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -46,7 +47,16 @@ public class NoteDatabase {
         NoteRecord nr = new NoteRecord(dt, type, event);
         this.database.add(nr);
         FileIO.dbOutout(this.database, MainActivity.noteDBName);
-        return nr.getFileName();
+
+        //Addded this for subfolder Structure
+        File subFolder = new File(FileManager.getFolderName(), event);
+        if(!subFolder.exists())
+        {
+            subFolder.mkdir();
+        }
+        String fileName = subFolder.getAbsolutePath() + "/" + nr.getFileName();
+        return fileName;
+//        return nr.getFileName();
 
     }
 
@@ -57,9 +67,9 @@ public class NoteDatabase {
         return true;
     }
 
-    // Adding a file with only a timestamp
+    //Adding a file with only a timestamp
     public boolean addFile(Date timestamp){
-        NoteRecord nr = new NoteRecord(timestamp, ".jpg", Scheduler.getEvent(timestamp));
+        NoteRecord nr = new NoteRecord(timestamp, ".jpg", MainActivity.checkClass());
 //        this.dataCount++;
         this.database.add(nr);
         FileIO.dbOutout(this.database, MainActivity.noteDBName);
