@@ -96,7 +96,8 @@ public class NoteRecord {
     }
     public String getFileLink()
     {
-        String ret = FileManager.getFolderName() + "/" + this.fileName;
+//        String ret = FileManager.getFolderName() + "/" + this.fileName;
+        String ret = FileManager.getFolderName() + "/" + this.event + "/" + this.fileName;
         return ret;
     }
 

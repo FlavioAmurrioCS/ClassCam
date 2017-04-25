@@ -437,8 +437,10 @@ public class Camera2BasicFragment extends Fragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 //        mFile = new File(getActivity().getExternalFilesDir(null), "pic.jpg");
-        String fileName = FileManager.getFolderName() + "/" + MainActivity.noteDB.saveFileName();
-        mFile = new File(fileName);
+//        String fileName = FileManager.getFolderName() + "/" + MainActivity.noteDB.saveFileName();
+        String fullPath = MainActivity.noteDB.saveFileName();
+        //Added folder Structure
+        mFile = new File(fullPath);
     }
 
     @Override
