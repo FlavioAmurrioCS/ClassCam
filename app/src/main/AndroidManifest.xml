@@ -73,6 +73,7 @@
         </activity>
         <activity android:name=".ImageBrowser" />
         <activity android:name=".ImageViewer" />
+        <activity android:name=".bigImageView"></activity>
     </application>
 
 </manifest>

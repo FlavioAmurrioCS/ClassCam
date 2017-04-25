@@ -16,10 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:label="Class Browser"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_file_manager" />
+    <include layout="@layout/content_file_manager"
+        android:layout_height="343dp" />
 
 </android.support.design.widget.CoordinatorLayout>

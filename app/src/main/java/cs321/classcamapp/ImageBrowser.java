@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -37,6 +38,12 @@ public class ImageBrowser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_browser);
 
+
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.browserToolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         positionOpen = getIntent().getIntExtra("positionOpen", -1);
         String eventName = classSchedule.get(positionOpen).getClassName();
         setTitle(eventName);
@@ -61,6 +68,11 @@ public class ImageBrowser extends AppCompatActivity {
                 Intent intent = new Intent(ImageBrowser.this, ImageViewer.class);
                 intent.putExtra("position", position);
                 startActivity(intent);
+
+                Intent bigView = new Intent(ImageBrowser.this, bigImageView.class);
+                bigView.putExtra("position", position);
+                bigView.putExtra("browserPositionOpen", positionOpen);
+                startActivity(bigView);
             }
         });
 

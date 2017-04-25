@@ -44,9 +44,10 @@ public class ImageBrowserAdapter extends BaseAdapter {
             if (convertView == null) {
                 // if it's not recycled, initialize some attributes
                 imageView = new ImageView(mContext);
-                imageView.setLayoutParams(new GridView.LayoutParams(185, 185));
+                imageView.setLayoutParams(new GridView.LayoutParams(500, 500));
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 imageView.setPadding(8, 8, 8, 8);
+                imageView.setRotation(90);
             } else {
                 imageView = (ImageView) convertView;
             }
@@ -62,8 +63,8 @@ public class ImageBrowserAdapter extends BaseAdapter {
 
 //            int tWidth = imageView.getWidth();
 //            int tHeight = imageView.getHeight();
-            int tWidth = 250;
-            int tHeight = 250;
+            int tWidth = 400;
+            int tHeight = 400;
             BitmapFactory.Options bmOptions = new BitmapFactory.Options();
             bmOptions.inJustDecodeBounds = true;
 //
@@ -81,6 +82,7 @@ public class ImageBrowserAdapter extends BaseAdapter {
             Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath(), bmOptions);
 //            Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
             imageView.setImageBitmap(bitmap);
+
             return imageView;
 
 //            //TODO take this out

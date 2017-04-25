@@ -40,7 +40,6 @@ public class ImageViewAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ImageView img = new ImageView(mContext);
-
         File imageFile = new File(ImageBrowser.getNoteArray()[i].getFileLink());
         Bitmap bitmap = BitmapFactory.decodeFile(imageFile.getAbsolutePath());
         img.setImageBitmap(bitmap);
