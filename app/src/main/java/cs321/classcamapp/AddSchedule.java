@@ -179,9 +179,9 @@ public class AddSchedule extends AppCompatActivity {
             cl = MainActivity.classSchedule.get(p);
         }
         cl.setClassName(sName);
-            cl.setStartDate(dStartDate);
-            cl.setEndDate(dEndDate);
-            int time[] = stringToTime(sStartTime);
+        cl.setStartDate(dStartDate);
+        cl.setEndDate(dEndDate);
+        int time[] = stringToTime(sStartTime);
             cl.setStartHour(time[0]);
             cl.setStartMin(time[1]);
             time = stringToTime(sEndTime);
