@@ -1,5 +1,6 @@
 package cs321.classcamapp;
 
+import android.provider.ContactsContract;
 import android.widget.Toast;
 
 import java.io.File;
@@ -37,6 +38,52 @@ public class NoteDatabase {
 
     public ArrayList<NoteRecord> getArrayList() {
         return this.database;
+    }
+
+    public boolean reOrganizedFiles()
+    {
+        boolean changed = false;
+        for(int i = 0; i<this.database.size(); i++)
+        {
+            NoteRecord nr = this.database.get(i);
+            String cur = checkClass(nr.getDate());
+            if(!nr.getEvent().equals(cur))
+            {
+                nr.moveTo(cur);
+                changed = true;
+            }
+            //else do nothing
+        }
+        if(changed)
+        {
+            FileIO.dbOutout(this.database, MainActivity.noteDBName);
+        }
+        return changed;
+    }
+    public static String checkClass(Date dt){
+        Schedule s;
+//        for (int i = database.size() - 1; i > -1; i--) {
+        for(int i=MainActivity.classSchedule.size()-1; i > -1; i--){
+//        for(int i=0; i < classSchedule.size() - 1; i++){
+            s = MainActivity.classSchedule.get(i);
+            int currentHour = dt.getHours();
+            int currentMin = dt.getMinutes();
+            if(dt.after(s.getStartDate()) && dt.before(s.getEndDate())) {    //within callender date
+                if ((currentHour > s.getStartHour()) && currentHour < s.getEndHour()) {    // within class period hour
+                    return s.getClassName();
+                } else if (currentHour == s.getStartHour()) {
+                    if (currentMin > s.getStartMin()) {
+                        return s.getClassName();
+                    }
+                } else if (currentHour == s.getEndHour()) {
+                    if (currentMin < s.getStartMin()) {
+                        return s.getClassName();
+                    }
+                }
+            }
+
+        }
+        return "Unclassified";
     }
 
     public String saveFileName()

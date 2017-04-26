@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         if(classSchedule.isEmpty())
         {
             Schedule cl = new Schedule();
-            cl.setClassName("UnOrganized");
+            cl.setClassName("Unclassified");
             cl.setStartDate(new Date(116, 0, 1));
             cl.setEndDate(new Date(119, 11, 30));
             cl.setStartHour(1);
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        return "UnOrganized";
+        return "Unclassified";
     }
 
     public static boolean currentlyClassPeriod(){
