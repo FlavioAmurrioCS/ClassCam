@@ -28,7 +28,6 @@ public class AddSchedule extends AppCompatActivity {
         setContentView(R.layout.activity_add_schedule);
 
         p = getIntent().getIntExtra("Position", -1);
-        Toast.makeText(this, "THIS IS THE POSITION WE GOT: " + p, Toast.LENGTH_SHORT).show();
         Mon = (CheckBox)findViewById(R.id.checkBox);
         Tue = (CheckBox)findViewById(R.id.checkBox1);
         Wed = (CheckBox)findViewById(R.id.checkBox2);
