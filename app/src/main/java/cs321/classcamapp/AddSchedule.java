@@ -51,8 +51,8 @@ public class AddSchedule extends AppCompatActivity {
             name.setText(temp.getClassName());
             date_start.setText(Schedule.dateToString(temp.getStartDate()));
             date_end.setText(Schedule.dateToString(temp.getEndDate()));
-            time_start.setText(temp.getStartHour() + ":" + temp.getStartMin());
-            time_end.setText(temp.getEndHour() + ":" + temp.getEndMin());
+            time_start.setText(temp.startTimeToString());
+            time_end.setText(temp.endTimeToString());
             ArrayList<String> days = temp.getWeekDay();
             for(int i=0; i<days.size(); i++){
                 if(days.get(i).equals("Mon"))

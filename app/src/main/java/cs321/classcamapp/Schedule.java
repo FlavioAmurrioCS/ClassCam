@@ -67,8 +67,8 @@ public class Schedule {
     public static String dateToString(Date dt)
     {
         StringBuilder sb = new StringBuilder();
+        sb.append(dt.getMonth()+1 + "/");
         sb.append((dt.getDate()) + "/");
-        sb.append(dt.getMonth() + "/");
         sb.append((dt.getYear() + 1900));
         return sb.toString();
     }
@@ -94,6 +94,25 @@ public class Schedule {
         sb.append(week.toString());
         return sb.toString();
     }
+
+    public String startTimeToString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.startHour);
+        String min = (this.startMin < 10) ? ("0" + startMin): "" +startMin;
+        sb.append(":" + min);
+        return sb.toString();
+    }
+
+    public String endTimeToString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.endHour);
+        String min = (this.endMin < 10) ? ("0" + endMin): "" +endMin;
+        sb.append(":" + min);
+        return sb.toString();
+    }
+
 
     public String getClassName() {
         return className;
