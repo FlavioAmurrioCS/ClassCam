@@ -438,9 +438,9 @@ public class Camera2BasicFragment extends Fragment
         super.onActivityCreated(savedInstanceState);
 //        mFile = new File(getActivity().getExternalFilesDir(null), "pic.jpg");
 //        String fileName = FileManager.getFolderName() + "/" + MainActivity.noteDB.saveFileName();
-        String fullPath = MainActivity.noteDB.saveFileName();
-        //Added folder Structure
-        mFile = new File(fullPath);
+//        String fullPath = MainActivity.noteDB.saveFileName();
+//        //Added folder Structure
+//        mFile = new File(fullPath);
     }
 
     @Override
@@ -893,6 +893,10 @@ public class Camera2BasicFragment extends Fragment
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.picture: {
+                //Test
+                String fullPath = MainActivity.noteDB.saveFileName();
+                mFile = new File(fullPath);
+
                 takePicture();
                 break;
             }
@@ -910,10 +914,11 @@ public class Camera2BasicFragment extends Fragment
     }
 
     private void setAutoFlash(CaptureRequest.Builder requestBuilder) {
-        if (mFlashSupported) {
-            requestBuilder.set(CaptureRequest.CONTROL_AE_MODE,
-                    CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
-        }
+        //Temporary disable because cause crash
+//        if (mFlashSupported) {
+//            requestBuilder.set(CaptureRequest.CONTROL_AE_MODE,
+//                    CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
+//        }
     }
 
     /**

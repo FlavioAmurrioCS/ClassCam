@@ -144,6 +144,7 @@ public class AddSchedule extends AppCompatActivity {
     }
     public void cancleClick(View view){
         Intent intent = new Intent(this, Scheduler.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
