@@ -49,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="New Camera"
-            android:onClick="newCameraOpen"/>
+            android:onClick="newCameraOpen"
+            android:visibility="invisible"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

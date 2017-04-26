@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -35,5 +36,26 @@ public class bigImageView extends AppCompatActivity {
         Intent backIntent = new Intent(bigImageView.this, ImageBrowser.class);
         backIntent.putExtra("positionOpen", browserPositionOpen);
         startActivity(backIntent);
+        finish();
+    }
+
+    public void deleteFile(View view) {
+        int position = getIntent().getIntExtra("position", 0);
+        NoteRecord nr = ImageBrowser.getNoteArray()[position];
+        MainActivity.noteDB.removeFile(nr);
+        Toast.makeText(this, "File Deleted", Toast.LENGTH_SHORT).show();
+        Intent in = new Intent(this, FileManager.class);
+        in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(in);
+    }
+    public void moveTo(View view) {
+        int position = getIntent().getIntExtra("position", 0);
+        NoteRecord nr = ImageBrowser.getNoteArray()[position];
+        String newEvent = "CS491";
+        nr.moveTo(newEvent);
+        Toast.makeText(this, "Moved to" + newEvent, Toast.LENGTH_SHORT).show();
+        Intent in = new Intent(this, FileManager.class);
+        in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(in);
     }
 }

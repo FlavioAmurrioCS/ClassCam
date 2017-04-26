@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             cl.addWeek("Mon");
             cl.addWeek("Tue");
             cl.addWeek("Wed");
-            cl.addWeek("Thur");
+            cl.addWeek("Thurs");
             cl.addWeek("Fri");
             cl.addWeek("Sat");
             cl.addWeek("Sun");
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openCameraActivity(View view) {
         //Toast.makeText(this, "Open Camera", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, CameraActivity.class);
+        Intent intent = new Intent(this, CameraActivity2.class);
         startActivity(intent);
     }
 
@@ -99,17 +99,17 @@ public class MainActivity extends AppCompatActivity {
             s = classSchedule.get(i);
             int currentHour = dt.getHours();
             int currentMin = dt.getMinutes();
-            if(dt.after(s.getStartDate()) && dt.before(s.getEndDate())){    //within callender date
-                if(( currentHour > s.getStartHour()) && currentHour < s.getEndHour()) {    // within class period hour
+            if(dt.after(s.getStartDate()) && dt.before(s.getEndDate())) {    //within callender date
+                if ((currentHour > s.getStartHour()) && currentHour < s.getEndHour()) {    // within class period hour
                     return s.getClassName();
-                }
-            } else if (currentHour == s.getStartHour()){
-                if(currentMin > s.getStartMin()){
-                    return s.getClassName();
-                }
-            } else if (currentHour == s.getEndHour()){
-                if(currentMin < s.getStartMin()){
-                    return s.getClassName();
+                } else if (currentHour == s.getStartHour()) {
+                    if (currentMin > s.getStartMin()) {
+                        return s.getClassName();
+                    }
+                } else if (currentHour == s.getEndHour()) {
+                    if (currentMin < s.getStartMin()) {
+                        return s.getClassName();
+                    }
                 }
             }
 

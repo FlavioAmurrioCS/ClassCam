@@ -61,7 +61,7 @@ public class AddSchedule extends AppCompatActivity {
                     Tue.setChecked(true);
                 else if(days.get(i).equals("Wed"))
                     Wed.setChecked(true);
-                else if(days.get(i).equals("Thur"))
+                else if(days.get(i).equals("Thurs"))
                     Thurs.setChecked(true);
                 else if(days.get(i).equals("Fri"))
                     Fri.setChecked(true);
@@ -133,7 +133,7 @@ public class AddSchedule extends AppCompatActivity {
         if(Wed.isChecked())
              cb.add ("Wed");
         if(Thurs.isChecked())
-             cb.add ("Thurd");
+             cb.add ("Thurs");
         if(Fri.isChecked())
              cb.add ("Fri");
         if(Sat.isChecked())
@@ -144,6 +144,7 @@ public class AddSchedule extends AppCompatActivity {
     }
     public void cancleClick(View view){
         Intent intent = new Intent(this, Scheduler.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
@@ -163,7 +164,7 @@ public class AddSchedule extends AppCompatActivity {
             if (name.getText().toString().equals("") || date_start.getText().toString().equals("")
                     || date_end.getText().toString().equals("") || time_end.getText().toString().equals("")
                     || time_start.getText().toString().equals("") || checkWeek().isEmpty() || d.before(e)) {
-                Toast.makeText(this, "Invalid Date", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Invalid Input", Toast.LENGTH_SHORT).show();
                 return;
             }
         }
