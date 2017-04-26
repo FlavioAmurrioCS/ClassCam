@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                         return s.getClassName();
                     }
                 } else if (currentHour == s.getEndHour()) {
-                    if (currentMin < s.getStartMin()) {
+                    if (currentMin < s.getEndMin()) {
                         return s.getClassName();
                     }
                 }
