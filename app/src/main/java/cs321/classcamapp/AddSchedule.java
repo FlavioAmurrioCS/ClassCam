@@ -164,7 +164,7 @@ public class AddSchedule extends AppCompatActivity {
             if (name.getText().toString().equals("") || date_start.getText().toString().equals("")
                     || date_end.getText().toString().equals("") || time_end.getText().toString().equals("")
                     || time_start.getText().toString().equals("") || checkWeek().isEmpty() || d.before(e)) {
-                Toast.makeText(this, "Invalid Date", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Invalid Input", Toast.LENGTH_SHORT).show();
                 return;
             }
         }

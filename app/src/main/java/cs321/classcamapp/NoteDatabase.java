@@ -98,6 +98,7 @@ public class NoteDatabase {
 
     public boolean removeFile(NoteRecord nr) {
 //        dataCount--;
+        nr.deleteFile();
         this.database.remove(nr);
         FileIO.dbOutout(this.database, MainActivity.noteDBName);
         return true;

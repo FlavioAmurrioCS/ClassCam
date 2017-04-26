@@ -1,5 +1,6 @@
 package cs321.classcamapp;
 
+import java.io.File;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -49,6 +50,15 @@ public class NoteRecord {
         sb.append("###");
         sb.append(this.tags.toString());
         return sb.toString();
+    }
+    public Date getDate()
+    {
+        return this.timeStamp;
+    }
+    public void deleteFile()
+    {
+        File rm = new File(this.getFileLink());
+        rm.delete();
     }
 
     static String nameSyntax(String event, Date timeStamp, String fileType) {

@@ -47,7 +47,7 @@ public class FileManager extends AppCompatActivity {
             grid.setAdapter(adapter);
         }
         else {
-            Toast.makeText(FileManager.this, "Hello world!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(FileManager.this, "Hello world!", Toast.LENGTH_SHORT).show();
             // Want to display something saying "No pictures.. go schedule a class and take some pictures!"
             String[] message = {"No pictures found. Go Schedulea class and take some notes!"};
             Integer[] empty = {R.drawable.emptyicon};
