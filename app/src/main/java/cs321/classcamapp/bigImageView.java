@@ -48,4 +48,14 @@ public class bigImageView extends AppCompatActivity {
         in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(in);
     }
+    public void moveTo(View view) {
+        int position = getIntent().getIntExtra("position", 0);
+        NoteRecord nr = ImageBrowser.getNoteArray()[position];
+        String newEvent = "CS491";
+        nr.moveTo(newEvent);
+        Toast.makeText(this, "Moved to" + newEvent, Toast.LENGTH_SHORT).show();
+        Intent in = new Intent(this, FileManager.class);
+        in.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(in);
+    }
 }

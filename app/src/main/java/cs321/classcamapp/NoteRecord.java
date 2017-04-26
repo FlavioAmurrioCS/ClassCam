@@ -61,6 +61,15 @@ public class NoteRecord {
         rm.delete();
     }
 
+    public void moveTo(String newEvent)
+    {
+        File oldFile = new File(this.getFileLink());
+        String newFileName = nameSyntax(newEvent,this.timeStamp,this.fileType);
+        File newFile = new File(FileManager.getFolderName() + "/" + newEvent + "/" + newFileName);
+        oldFile.renameTo(newFile);
+        this.event = newEvent;
+    }
+
     static String nameSyntax(String event, Date timeStamp, String fileType) {
         StringBuffer sb = new StringBuffer();
         sb.append(event);
