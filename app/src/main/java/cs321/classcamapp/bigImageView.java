@@ -35,5 +35,6 @@ public class bigImageView extends AppCompatActivity {
         Intent backIntent = new Intent(bigImageView.this, ImageBrowser.class);
         backIntent.putExtra("positionOpen", browserPositionOpen);
         startActivity(backIntent);
+        finish();
     }
 }
