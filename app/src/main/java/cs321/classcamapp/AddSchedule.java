@@ -18,7 +18,7 @@ public class AddSchedule extends AppCompatActivity {
 
     EditText name, date_start, date_end, time_start, time_end;
     CheckBox Mon, Tue, Wed, Thurs, Fri, Sat, Sun;
-    Button save, cancel;
+    Button save, cancel, delete;
     static int p;
     //ArrayList<Class> classData = null;
 
@@ -45,9 +45,12 @@ public class AddSchedule extends AppCompatActivity {
 
         save = (Button)findViewById(R.id.save_bt);
         cancel = (Button)findViewById(R.id.cancel_bt);
+        delete = (Button)findViewById(R.id.deleteBT);
+        delete.setVisibility(View.INVISIBLE);
 
         if(p > -1){
             Schedule temp = MainActivity.classSchedule.get(p);
+            delete.setVisibility(View.VISIBLE);
             name.setText(temp.getClassName());
             date_start.setText(Schedule.dateToString(temp.getStartDate()));
             date_end.setText(Schedule.dateToString(temp.getEndDate()));
@@ -223,4 +226,13 @@ public class AddSchedule extends AppCompatActivity {
         return time;
     }
 
+    public void deleteClass(View view) {
+        Schedule temp = MainActivity.classSchedule.get(p);
+        MainActivity.classSchedule.remove(temp);
+        Schedule.classDBOutout(MainActivity.classSchedule, MainActivity.classDB);
+        Intent a = new Intent(this, Scheduler.class);
+        a.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Toast.makeText(this, "Deleting", Toast.LENGTH_SHORT).show();
+        startActivity(a);
+    }
 }
