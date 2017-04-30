@@ -22,6 +22,8 @@ public class AddSchedule extends AppCompatActivity {
     static int p;
     //ArrayList<Class> classData = null;
 
+    public AddSchedule(){}
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +77,6 @@ public class AddSchedule extends AppCompatActivity {
             }
         }
     }
-
 
     @Override
     public void onStart() {
