@@ -22,7 +22,7 @@ public class ScheduleTest {
         schd = new Schedule("UnOrganized###1451624400000###1577682000000###1###0###23###59###[Mon,Tue,Wed,Thurs,Fri,Sat,Sun]");
     }
 
-    @Test
+    @Test//clearWeek method is tested at the end
     public void clearWeek() throws Exception {
 
     }
