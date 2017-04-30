@@ -1,8 +1,13 @@
 package cs321.classcamapp;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
+import java.io.File;
+import java.io.IOError;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.lang.String;
@@ -17,6 +22,9 @@ public class ScheduleTest {
     private Date testD;
     private Schedule schd;
 
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
+
     @Before
     public void setup() throws Exception {
         testD = new Date(117,5,15);
@@ -25,12 +33,9 @@ public class ScheduleTest {
 
     @Test//clearWeek method is tested at the end
     public void clearWeek() throws Exception {
-
-    }
-
-    @Test//toListView method is tested at the end
-    public void toListView() throws Exception {
-
+        schd.clearWeek();
+        ArrayList<String> test_week = new ArrayList<>();
+        assertEquals("should be empty array",test_week,schd.getWeekDay());
     }
 
     @Test
@@ -41,6 +46,7 @@ public class ScheduleTest {
 
     @Test
     public void toFileString() throws Exception {
+        assertEquals("UnOrganized###1451624400000###1577682000000###1###0###23###59###[Mon,Tue,Wed,Thurs,Fri,Sat,Sun]",schd.toFileString());
 
     }
 
@@ -84,8 +90,7 @@ public class ScheduleTest {
 
     @Test
     public void getStartDate() throws Exception {
-        Date testDt;
-        assertEquals(testDt = new Date(Long.parseLong("1451624400000")),schd.getStartDate());
+        assertEquals(new Date(Long.parseLong("1451624400000")),schd.getStartDate());
     }
 
     @Test
@@ -155,27 +160,25 @@ public class ScheduleTest {
 
     @Test
     public void setEndMin() throws Exception {
-
-    }
-
-    @Test
-    public void addWeek() throws Exception {
-
-    }
-
-    @Test
-    public void getWeekDay() throws Exception {
-
+        Schedule local = new Schedule();
+        local.setEndMin(6);
+        assertEquals("should equal 6",6,local.getEndMin());
     }
 
     @Test
     public void classDBInput() throws Exception {
-
+        ArrayList<Schedule> testList = new ArrayList<>();
+        String filename = "a_special_missing_file.txt";
+        assertEquals(testList, schd.classDBInput(filename));
     }
 
     @Test
     public void classDBOutout() throws Exception {
-
+        ArrayList<Schedule> testList = new ArrayList<>();
+        String filename = "a_save_file.txt";
+        File file = new File(filename);
+        schd.classDBOutout(testList,filename);
+        assertTrue(file.exists());
     }
     @Test
     public void clearWeekTest() throws Exception{
