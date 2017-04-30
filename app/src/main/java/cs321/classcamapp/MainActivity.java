@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
         noteDB = new NoteDatabase(noteDBName);
         classSchedule = Schedule.classDBInput(classDB);
 
-        if(classSchedule.isEmpty())
-        {
+        if (classSchedule.isEmpty()) {
             Schedule cl = new Schedule();
             cl.setClassName("Unclassified");
             cl.setStartDate(new Date(116, 0, 1));
@@ -81,18 +80,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void requestStoragePermission() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-//            new Camera2BasicFragment.ConfirmationDialog().show(getChildFragmentManager(), FRAGMENT_DIALOG);
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+            // Show an explanation to the user *asynchronously* -- don't block
+            // this thread waiting for the user's response! After the user
+            // sees the explanation, try again to request the permission.
+
         } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+
+            // No explanation needed, we can request the permission.
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     REQUEST_STORAGE_PERMISSION);
+//        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+////            new Camera2BasicFragment.ConfirmationDialog().show(getChildFragmentManager(), FRAGMENT_DIALOG);
+//        } else {
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+//                    REQUEST_STORAGE_PERMISSION);
+//        }
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case REQUEST_STORAGE_PERMISSION:{
+        switch (requestCode) {
+            case REQUEST_STORAGE_PERMISSION: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -135,17 +149,17 @@ public class MainActivity extends AppCompatActivity {
      * if not currently within a class period.
      *
      */
-    public static String checkClass(){
+    public static String checkClass() {
         Date dt = new Date();
         Schedule s;
 
 //        for (int i = database.size() - 1; i > -1; i--) {
-        for(int i=classSchedule.size()-1; i > -1; i--){
+        for (int i = classSchedule.size() - 1; i > -1; i--) {
 //        for(int i=0; i < classSchedule.size() - 1; i++){
             s = classSchedule.get(i);
             int currentHour = dt.getHours();
             int currentMin = dt.getMinutes();
-            if(dt.after(s.getStartDate()) && dt.before(s.getEndDate())) {    //within callender date
+            if (dt.after(s.getStartDate()) && dt.before(s.getEndDate())) {    //within callender date
                 if ((currentHour > s.getStartHour()) && currentHour < s.getEndHour()) {    // within class period hour
                     return s.getClassName();
                 } else if (currentHour == s.getStartHour()) {
@@ -164,9 +178,9 @@ public class MainActivity extends AppCompatActivity {
         return "Unclassified";
     }
 
-    public static boolean currentlyClassPeriod(){
+    public static boolean currentlyClassPeriod() {
         String className = checkClass();
-        if(className.equals("UnOrganized")){
+        if (className.equals("UnOrganized")) {
             return false;
         }
         return true;
