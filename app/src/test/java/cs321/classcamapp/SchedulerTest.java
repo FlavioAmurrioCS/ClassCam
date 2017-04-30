@@ -5,18 +5,17 @@ import android.test.ActivityInstrumentationTestCase2;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
- * Created by MyLe on 4/30/17.
+ * Created by Flavio on 4/30/2017.
  */
-public class AddScheduleTest extends ActivityInstrumentationTestCase2<FileManager> {
-    AddSchedule addSchedule;
 
-    public AddScheduleTest(Class<FileManager> activityClass) {
+public class SchedulerTest extends ActivityInstrumentationTestCase2<FileManager> {
+
+    Scheduler scheduler;
+
+    public SchedulerTest(Class<FileManager> activityClass) {
         super(activityClass);
     }
-
 
     @Before
     public void setup() throws Exception {

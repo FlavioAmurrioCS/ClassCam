@@ -18,7 +18,6 @@ public class Schedule {
     private Date startDate, endDate;
     private int startHour, endHour, startMin,endMin;
     private ArrayList<String> week = new ArrayList<>();
-
     public Schedule()
     {
 

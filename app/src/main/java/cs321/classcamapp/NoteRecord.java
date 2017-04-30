@@ -1,5 +1,6 @@
 package cs321.classcamapp;
 
+
 import java.io.File;
 import java.util.Date;
 import java.util.ArrayList;
@@ -68,6 +69,8 @@ public class NoteRecord {
         File newFile = new File(FileManager.getFolderName() + "/" + newEvent + "/" + newFileName);
         oldFile.renameTo(newFile);
         this.event = newEvent;
+        this.fileName = newFileName;
+//        File
     }
 
     static String nameSyntax(String event, Date timeStamp, String fileType) {
