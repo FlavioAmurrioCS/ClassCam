@@ -13,11 +13,12 @@ import static org.junit.Assert.*;
 public class ScheduleTest {
 
     private Date testD;
+    private Schedule schd;
 
     @Before
     public void setup() throws Exception {
         testD = new Date(117,5,15);
-        Schedule schd = new Schedule("UnOrganized###1451624400000###1577682000000###1###0###23###59###[Mon,Tue,Wed,Thurs,Fri,Sat,Sun]");
+        schd = new Schedule("UnOrganized###1451624400000###1577682000000###1###0###23###59###[Mon,Tue,Wed,Thurs,Fri,Sat,Sun]");
     }
 
     @Test
@@ -82,7 +83,7 @@ public class ScheduleTest {
 
     @Test
     public void getStartHour() throws Exception {
-
+        assertEquals("should equal 0", 0,schd.getStartHour());
     }
 
     @Test
@@ -102,7 +103,7 @@ public class ScheduleTest {
 
     @Test
     public void getStartMin() throws Exception {
-
+        assertEquals("should equal 1", 1,schd.getStartHour());
     }
 
     @Test
