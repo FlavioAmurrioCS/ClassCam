@@ -1,18 +1,15 @@
 package cs321.classcamapp;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Date;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by tor on 4/30/17.
  */
-public class MainActivityTest {
-    @Before
-
+public class MainActivityTest{
 
     @Test
     public void onCreate() throws Exception {
@@ -34,7 +31,7 @@ public class MainActivityTest {
 
     }
 
-    @Test
+@Test
     public void checkClass() throws Exception {
         Schedule test = new Schedule();
         test.setClassName("Unclassified");
