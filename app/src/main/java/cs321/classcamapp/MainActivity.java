@@ -1,7 +1,14 @@
 package cs321.classcamapp;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
 import android.support.transition.Scene;
+import android.support.v13.app.ActivityCompat;
+import android.support.v13.app.FragmentCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +18,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    public static String classDB = FileManager.getFolderName() + "/" + "classDB.txt";
-    public static String noteDBName= FileManager.getFolderName() + "/" + "noteDB.txt";
+    private static final int REQUEST_STORAGE_PERMISSION = 1;
+    public static String classDB;
+    public static String noteDBName;
 
 
     //arrayList of schedules(className, startDate, endDate, startHour, startMinute, endHour, endMinute (base 24)
@@ -24,9 +32,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        noteDB = new NoteDatabase(noteDBName);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestStoragePermission();
+        }
+        classDB = FileManager.getFolderName() + "/" + "classDB.txt";
+        noteDBName = FileManager.getFolderName() + "/" + "noteDB.txt";
 
+        noteDB = new NoteDatabase(noteDBName);
         classSchedule = Schedule.classDBInput(classDB);
+
         if(classSchedule.isEmpty())
         {
             Schedule cl = new Schedule();
@@ -63,6 +78,37 @@ public class MainActivity extends AppCompatActivity {
 //            //stay on the main acitivity screen
 //        }
 
+    }
+
+    private void requestStoragePermission() {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+//            new Camera2BasicFragment.ConfirmationDialog().show(getChildFragmentManager(), FRAGMENT_DIALOG);
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    REQUEST_STORAGE_PERMISSION);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case REQUEST_STORAGE_PERMISSION:{
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                } else {
+                    Toast.makeText(this, "ENABLE APP PERMISSION ON SETTINGS", Toast.LENGTH_SHORT).show();
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+        }
     }
 
     public void openCameraActivity(View view) {

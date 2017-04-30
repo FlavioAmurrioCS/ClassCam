@@ -18,6 +18,10 @@ public class NoteDatabase {
     public NoteDatabase(String fileIO) {
         this.database = FileIO.dbInput(fileIO);
     }
+    public NoteDatabase()
+    {
+        database = new ArrayList<NoteRecord>();
+    }
 
 
 
