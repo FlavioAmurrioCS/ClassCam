@@ -20,6 +20,7 @@ public class Schedule {
     private ArrayList<String> week = new ArrayList<>();
     public Schedule()
     {
+
     }
 
     public Schedule(String input) {
