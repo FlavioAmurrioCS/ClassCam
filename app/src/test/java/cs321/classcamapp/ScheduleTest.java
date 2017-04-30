@@ -1,6 +1,9 @@
 package cs321.classcamapp;
 
+import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Date;
 
 import static org.junit.Assert.*;
 
@@ -8,6 +11,14 @@ import static org.junit.Assert.*;
  * Created by tor on 4/30/17.
  */
 public class ScheduleTest {
+
+    private Date testD;
+
+    @Before
+    public void setup() throws Exception {
+        testD = new Date(117,5,15);
+    }
+
     @Test
     public void clearWeek() throws Exception {
 
@@ -20,7 +31,7 @@ public class ScheduleTest {
 
     @Test
     public void dateToString() throws Exception {
-
+        assertEquals("The date should read: 6/15/2017","6/15/2017",Schedule.dateToString(testD));
     }
 
     @Test
