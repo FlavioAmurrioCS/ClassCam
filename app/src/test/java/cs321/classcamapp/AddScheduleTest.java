@@ -10,10 +10,10 @@ import static org.junit.Assert.*;
 /**
  * Created by MyLe on 4/30/17.
  */
-public class AddScheduleTest extends ActivityInstrumentationTestCase2<FileManager> {
+public class AddScheduleTest extends ActivityInstrumentationTestCase2<AddSchedule> {
     AddSchedule addSchedule;
 
-    public AddScheduleTest(Class<FileManager> activityClass) {
+    public AddScheduleTest(Class<AddSchedule> activityClass) {
         super(activityClass);
     }
 

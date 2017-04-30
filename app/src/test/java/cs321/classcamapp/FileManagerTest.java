@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 /**
  * Created by tor on 4/30/17.
  */
-public class FileManagerTest extends ActivityInstrumentationTestCase2<FileManager>{
+public class FileManagerTest extends ActivityInstrumentationTestCase2<FileManager> {
     FileManager fileManager;
 
     public FileManagerTest(Class<FileManager> activityClass) {
@@ -22,13 +22,13 @@ public class FileManagerTest extends ActivityInstrumentationTestCase2<FileManage
 
     }
 
-    @Test
-    public void getFolderName() throws Exception {
-
+    @Override
+    protected void tearDown() throws Exception {
+        super.tearDown();
     }
 
     @Test
-    public void onCreate() throws Exception {
+    public void getFolderName() throws Exception {
 
     }
 
