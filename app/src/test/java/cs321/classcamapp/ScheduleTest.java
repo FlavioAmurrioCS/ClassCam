@@ -17,6 +17,7 @@ public class ScheduleTest {
     @Before
     public void setup() throws Exception {
         testD = new Date(117,5,15);
+        Schedule schd = new Schedule("UnOrganized###1451624400000###1577682000000###1###0###23###59###[Mon,Tue,Wed,Thurs,Fri,Sat,Sun]");
     }
 
     @Test
@@ -32,6 +33,7 @@ public class ScheduleTest {
     @Test
     public void dateToString() throws Exception {
         assertEquals("The date should read: 6/15/2017","6/15/2017",Schedule.dateToString(testD));
+        assertNotEquals("The date should not equal: 7/15/2017", "7/15/2017", Schedule.dateToString(testD));
     }
 
     @Test
@@ -41,7 +43,6 @@ public class ScheduleTest {
 
     @Test
     public void startTimeToString() throws Exception {
-
     }
 
     @Test
