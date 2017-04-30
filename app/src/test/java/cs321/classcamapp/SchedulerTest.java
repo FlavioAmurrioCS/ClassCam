@@ -9,11 +9,11 @@ import org.junit.Test;
  * Created by Flavio on 4/30/2017.
  */
 
-public class SchedulerTest extends ActivityInstrumentationTestCase2<FileManager> {
+public class SchedulerTest extends ActivityInstrumentationTestCase2<Scheduler> {
 
     Scheduler scheduler;
 
-    public SchedulerTest(Class<FileManager> activityClass) {
+    public SchedulerTest(Class<Scheduler> activityClass) {
         super(activityClass);
     }
 
