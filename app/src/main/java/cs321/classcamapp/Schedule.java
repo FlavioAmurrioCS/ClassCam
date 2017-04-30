@@ -21,6 +21,7 @@ public class Schedule {
 
     public Schedule()
     {
+
     }
 
     public Schedule(String input) {
