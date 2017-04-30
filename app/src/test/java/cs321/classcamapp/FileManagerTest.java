@@ -10,22 +10,7 @@ import static org.junit.Assert.*;
 /**
  * Created by tor on 4/30/17.
  */
-public class FileManagerTest extends ActivityInstrumentationTestCase2<FileManager> {
-    FileManager fileManager;
-
-    public FileManagerTest(Class<FileManager> activityClass) {
-        super(activityClass);
-    }
-
-    @Before
-    public void setup() throws Exception {
-
-    }
-
-    @Override
-    protected void tearDown() throws Exception {
-        super.tearDown();
-    }
+public class FileManagerTest {
 
     @Test
     public void getFolderName() throws Exception {
