@@ -62,7 +62,11 @@ public class ScheduleTest {
 
     @Test
     public void endTimeToString() throws Exception {
-
+        Schedule a = new Schedule();
+        a.setEndHour(1);
+        a.setEndMin(30);
+        String expected = "1:30";
+        assertEquals(expected, a.endTimeToString());
     }
 
     @Test
