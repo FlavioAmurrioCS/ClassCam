@@ -71,17 +71,20 @@ public class ScheduleTest {
 
     @Test
     public void getClassName() throws Exception {
-
+        assertEquals("UnOrganized",schd.getClassName());
     }
 
     @Test
     public void setClassName() throws Exception {
-
+        Schedule schd2 = new Schedule();
+        schd2.setClassName("Test1");
+        assertEquals("Test1",schd2.getClassName());
     }
 
     @Test
     public void getStartDate() throws Exception {
-
+        Date testDt;
+        assertEquals(testDt = new Date(Long.parseLong("1451624400000")),schd.getStartDate());
     }
 
     @Test
@@ -101,7 +104,7 @@ public class ScheduleTest {
 
     @Test
     public void getStartHour() throws Exception {
-        assertEquals("should equal 0", 0,schd.getStartHour());
+        assertEquals("should equal 1", 1,schd.getStartHour());
     }
 
     @Test
@@ -111,7 +114,7 @@ public class ScheduleTest {
 
     @Test
     public void getEndHour() throws Exception {
-
+        assertEquals("should equal 23",23,schd.getEndHour());
     }
 
     @Test
@@ -121,17 +124,19 @@ public class ScheduleTest {
 
     @Test
     public void getStartMin() throws Exception {
-        assertEquals("should equal 1", 1,schd.getStartHour());
+        assertEquals("should equal 0", 0,schd.getStartMin());
     }
 
     @Test
     public void setStartMin() throws Exception {
-
+        Schedule schd1 = new Schedule();
+        schd1.setStartMin(10);
+        assertEquals("should equal 10",10,schd1.getStartMin());
     }
 
     @Test
     public void getEndMin() throws Exception {
-
+        assertEquals("should equal 59", 59,schd.getEndMin());
     }
 
     @Test
