@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.lang.String;
 
 import static org.junit.Assert.*;
 
@@ -89,17 +90,26 @@ public class ScheduleTest {
 
     @Test
     public void setStartDate() throws Exception {
-
+        Schedule local = new Schedule();
+        Date test = new Date(118,1,10);
+        local.setStartDate(test);
+        assertEquals(test,local.getStartDate());
     }
 
     @Test
     public void getEndDate() throws Exception {
-
+        Schedule local = new Schedule();
+        Date test = new Date(118,1,11);
+        local.setEndDate(test);
+        assertEquals(test,local.getEndDate());
     }
 
     @Test
     public void setEndDate() throws Exception {
-
+        Schedule local = new Schedule();
+        Date test = new Date(118,1,12);
+        local.setEndDate(test);
+        assertEquals(test,local.getEndDate());
     }
 
     @Test
@@ -109,7 +119,9 @@ public class ScheduleTest {
 
     @Test
     public void setStartHour() throws Exception {
-
+        Schedule local = new Schedule();
+        local.setStartHour(11);
+        assertEquals(11,local.getStartHour());
     }
 
     @Test
@@ -119,7 +131,9 @@ public class ScheduleTest {
 
     @Test
     public void setEndHour() throws Exception {
-
+        Schedule local = new Schedule();
+        local.setEndHour(2);
+        assertEquals(2,local.getEndHour());
     }
 
     @Test
