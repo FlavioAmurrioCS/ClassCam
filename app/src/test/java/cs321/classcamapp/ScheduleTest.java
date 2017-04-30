@@ -26,7 +26,7 @@ public class ScheduleTest {
 
     }
 
-    @Test
+    @Test//toListView method is tested at the end
     public void toListView() throws Exception {
 
     }
@@ -44,6 +44,19 @@ public class ScheduleTest {
 
     @Test
     public void startTimeToString() throws Exception {
+        Schedule a = new Schedule();
+        a.setStartHour(1);
+        a.setStartMin(30);
+        String expected = "1:30";
+        assertEquals(expected, a.startTimeToString());
+    }
+    @Test
+    public void startTimeToString1() throws Exception {
+        Schedule a = new Schedule();
+        a.setStartHour(9);
+        a.setStartMin(5);
+        String expected = "9:05";
+        assertEquals(expected, a.startTimeToString());
     }
 
     @Test
