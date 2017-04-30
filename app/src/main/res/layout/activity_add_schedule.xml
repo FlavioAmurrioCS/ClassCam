@@ -39,8 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="04/21/2017"
-            android:id="@+id/startDate"
-            android:onClick="datePicker" />
+            android:id="@+id/startDate" />
     </LinearLayout>
 
     <LinearLayout
@@ -55,8 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="04/27/2017"
-            android:id="@+id/endDate"
-            android:onClick="datePicker" />
+            android:id="@+id/endDate" />
     </LinearLayout>
 
     <LinearLayout
@@ -71,8 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="12:45"
-            android:id="@+id/startTime"
-            android:onClick="timePicker" />
+            android:id="@+id/startTime" />
     </LinearLayout>
 
     <LinearLayout
@@ -87,8 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="13:30"
-            android:id="@+id/endTime"
-            android:onClick="timePicker" />
+            android:id="@+id/endTime" />
     </LinearLayout>
 
     <LinearLayout
