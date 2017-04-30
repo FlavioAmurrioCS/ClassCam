@@ -25,6 +25,11 @@ public class CameraActivity extends AppCompatActivity {
     private static final String TAG = "CameraScreen";
     public static final int MEDIA_TYPE_IMAGE = 1;
 
+
+    public CameraActivity()
+    {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,14 +112,14 @@ public class CameraActivity extends AppCompatActivity {
         // using Environment.getExternalStorageState() before doing this.
 
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES), "MyCameraApp");
+                Environment.DIRECTORY_PICTURES), "ClassCam");
         // This location works best if you want the created images to be shared
         // between applications and persist after your app has been uninstalled.
 
         // Create the storage directory if it does not exist
         if (! mediaStorageDir.exists()){
             if (! mediaStorageDir.mkdirs()){
-                Log.d("MyCameraApp", "failed to create directory");
+                Log.d("ClassCam", "failed to create directory");
                 return null;
             }
         }
