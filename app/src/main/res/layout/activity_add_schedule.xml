@@ -35,11 +35,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Starting Date"/>
+
         <EditText
+            android:id="@+id/startDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="04/21/2017"
-            android:id="@+id/startDate" />
+            android:inputType="date"
+            android:text="04/21/2017" />
     </LinearLayout>
 
     <LinearLayout
@@ -50,11 +52,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ending Date"/>
+
         <EditText
+            android:id="@+id/endDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="04/27/2017"
-            android:id="@+id/endDate" />
+            android:inputType="date"
+            android:text="04/27/2017" />
     </LinearLayout>
 
     <LinearLayout
@@ -65,11 +69,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Starting Time"/>
+
         <EditText
+            android:id="@+id/startTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="12:45"
-            android:id="@+id/startTime" />
+            android:inputType="time"
+            android:text="12:45" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,11 +86,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ending Time"/>
+
         <EditText
+            android:id="@+id/endTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="13:30"
-            android:id="@+id/endTime" />
+            android:inputType="time"
+            android:text="13:30" />
     </LinearLayout>
 
     <LinearLayout
