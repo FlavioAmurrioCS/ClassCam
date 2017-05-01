@@ -82,6 +82,8 @@ public class AddSchedule extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
+        EditText date_start = (EditText)findViewById(R.id.startDate);
+
         date_start.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View view, boolean hasfocus) {
                 if (hasfocus) {
@@ -93,6 +95,7 @@ public class AddSchedule extends AppCompatActivity {
         });
 
 
+        EditText date_end = (EditText)findViewById(R.id.endDate);
         date_end.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View view, boolean hasfocus) {
                 if (hasfocus) {
@@ -103,6 +106,7 @@ public class AddSchedule extends AppCompatActivity {
             }
         });
 
+        EditText time_start = (EditText)findViewById(R.id.startTime);
         time_start.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View view, boolean hasfocus) {
                 if (hasfocus) {
@@ -115,6 +119,7 @@ public class AddSchedule extends AppCompatActivity {
         });
 
 
+        EditText time_end = (EditText)findViewById(R.id.endTime);
         time_end.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View view, boolean hasfocus) {
                 if (hasfocus) {
