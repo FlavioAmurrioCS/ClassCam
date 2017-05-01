@@ -57,7 +57,7 @@ public class AddClassTest2 {
         try {
             Thread.sleep(50);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            e.printStackTrace();      
         }
 
         ViewInteraction appCompatEditText3 = onView(
