@@ -17,10 +17,10 @@ import static org.junit.Assert.*;
 public class AddScheduleTest {
     AddSchedule as;
 
-//    @Before
-//    public void setup() throws  Exception{
-//        as.getClass();
-//    }
+    @Before
+    public void setup() throws  Exception{
+        as.getClass();
+    }
 
     @Test
     public void test1(){
